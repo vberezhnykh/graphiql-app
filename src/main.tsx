@@ -12,10 +12,10 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <HomePage />,
-    errorElement: <ErrorPage />,
   },
   { path: '/sign-in' },
   { path: '/main', element: <MainPage /> },
+  { path: '*', element: <ErrorPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
