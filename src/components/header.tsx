@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 const Header = () => {
@@ -27,8 +28,8 @@ const Header = () => {
           ))}
         </nav>
         <div>
-          <button>Sign In</button>
-          <button>Sign Up</button>
+          <Link to={'/sign-in'}>Sign In</Link>
+          <Link to={'/sign-up'}>Sign Up</Link>
         </div>
       </div>
     </header>
