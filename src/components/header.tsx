@@ -1,5 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { logout } from '../features/firebase';
+import { saveUserToken } from '../store/features/authSlice';
+import { toast } from 'react-toastify';
 
 const Header = () => {
   const navLinks = [
@@ -12,6 +16,10 @@ const Header = () => {
       text: 'Main',
     },
   ];
+
+  const userToken = useAppSelector((state) => state.auth.userToken);
+  const dispath = useAppDispatch();
+  const navigate = useNavigate();
 
   return (
     <header className="header">
@@ -27,14 +35,27 @@ const Header = () => {
             </NavLink>
           ))}
         </nav>
-        <ul className="header__buttons">
-          <li>
-            <Link to={'/sign-in'}>Sign In</Link>
-          </li>
-          <li>
-            <Link to={'/sign-up'}>Sign Up</Link>
-          </li>
-        </ul>
+        {userToken ? (
+          <button
+            onClick={() => {
+              logout();
+              sessionStorage.removeItem('Auth Token');
+              dispath(saveUserToken(''));
+              navigate('/');
+            }}
+          >
+            Sign out
+          </button>
+        ) : (
+          <ul className="header__buttons">
+            <li>
+              <Link to={'/sign-in'}>Sign In</Link>
+            </li>
+            <li>
+              <Link to={'/sign-up'}>Sign Up</Link>
+            </li>
+          </ul>
+        )}
       </div>
     </header>
   );
