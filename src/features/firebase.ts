@@ -7,6 +7,7 @@ import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
+  User,
 } from 'firebase/auth';
 import { getFirestore, query, getDocs, collection, where, addDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
@@ -21,17 +22,17 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
 
 export const logInWithEmailAndPassword = async (
   email: string,
   password: string,
-  redirectToMainPage: (refreshToken: string) => void
+  redirectToMainPage: (user: User) => void
 ) => {
   try {
     const res = await signInWithEmailAndPassword(auth, email, password);
-    redirectToMainPage(res.user.refreshToken);
+    redirectToMainPage(res.user);
   } catch (error: unknown) {
     console.error(error);
     if (!(error instanceof FirebaseError)) return;

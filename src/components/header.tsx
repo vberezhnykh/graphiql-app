@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { logout } from '../features/firebase';
-import { saveUserToken } from '../store/features/authSlice';
+import { saveUserName, saveUserToken } from '../store/features/authSlice';
 import { toast } from 'react-toastify';
 
 const Header = () => {
@@ -40,7 +40,9 @@ const Header = () => {
             onClick={() => {
               logout();
               sessionStorage.removeItem('Auth Token');
+              sessionStorage.removeItem('userName');
               dispath(saveUserToken(''));
+              dispath(saveUserName(''));
               navigate('/');
             }}
           >

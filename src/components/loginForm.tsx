@@ -3,7 +3,10 @@ import { useForm } from 'react-hook-form';
 import { logInWithEmailAndPassword } from '../features/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../store/hooks';
-import { saveUserToken } from '../store/features/authSlice';
+import { saveUserName, saveUserToken } from '../store/features/authSlice';
+import { User } from 'firebase/auth';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../features/firebase';
 
 type FormData = {
   login: string;
@@ -20,10 +23,20 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const redirectToMainPage = (refreshToken: string) => {
+  const fetchUserName = async (user: User) => {
+    const q = query(collection(db, 'users'), where('uid', '==', user.uid));
+    const doc = await getDocs(q);
+    const data = doc.docs[0].data();
+    const name = data.name;
+    sessionStorage.setItem('userName', name);
+    dispatch(saveUserName(name));
+  };
+
+  const redirectToMainPage = (user: User) => {
     alert('successfully login');
-    sessionStorage.setItem('Auth Token', refreshToken);
-    dispatch(saveUserToken(refreshToken));
+    sessionStorage.setItem('Auth Token', user.refreshToken);
+    fetchUserName(user);
+    dispatch(saveUserToken(user.refreshToken));
     navigate('/main');
   };
 
