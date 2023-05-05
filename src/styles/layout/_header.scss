@@ -19,7 +19,7 @@
   list-style: none;
   padding: 0;
   gap: 2rem;
-  
+
   a {
     text-decoration: none;
   }
@@ -28,4 +28,27 @@
 .nav-list__item--active {
   font-weight: bold;
   color: $light-blue;
+}
+
+.header__buttons {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+
+  a {
+    display: block;
+    background-color: $blue;
+    color: $white;
+    border: none;
+    border-radius: 0.8rem;
+    font-weight: bold;
+    padding: 1rem 1.6rem;
+    line-height: 100%;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }

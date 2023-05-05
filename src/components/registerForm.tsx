@@ -30,7 +30,6 @@ const RegisterForm = () => {
   const onSubmit = (data: FormData) => {
     const { name, email, password } = data;
     registerWithEmailAndPassword(name, email, password, redirectToMainPage);
-    console.log(1);
   };
 
   const nameRegex = /^[A-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/g;

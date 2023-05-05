@@ -24,11 +24,19 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-export const logInWithEmailAndPassword = async (email: string, password: string) => {
+export const logInWithEmailAndPassword = async (
+  email: string,
+  password: string,
+  redirectToMainPage: (refreshToken: string) => void
+) => {
   try {
-    await signInWithEmailAndPassword(auth, email, password);
+    const res = await signInWithEmailAndPassword(auth, email, password);
+    redirectToMainPage(res.user.refreshToken);
   } catch (error: unknown) {
     console.error(error);
+    if (!(error instanceof FirebaseError)) return;
+    if (error.code === 'auth/wrong-password') toast('Invalid password');
+    if (error.code === 'auth/user-not-found') toast('User not found');
   }
 };
 

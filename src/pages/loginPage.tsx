@@ -1,21 +1,20 @@
 import { Link } from 'react-router-dom';
-import RegisterForm from '../components/registerForm';
+import LoginForm from '../components/loginForm';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-const SignUpPage = () => {
+const LoginPage = () => {
   return (
     <>
       <header>
-        Already have an account? <Link to={'/sign-in'}>Sign In</Link>
+        Not a member? <Link to={'/sign-up'}>Sign Up now</Link>
       </header>
       <ToastContainer />
       <main className="main--flex">
-        <RegisterForm />
+        <LoginForm />
       </main>
       <footer>Footer Template</footer>
     </>
   );
 };
 
-export default SignUpPage;
+export default LoginPage;

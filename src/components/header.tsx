@@ -27,10 +27,14 @@ const Header = () => {
             </NavLink>
           ))}
         </nav>
-        <div>
-          <Link to={'/sign-in'}>Sign In</Link>
-          <Link to={'/sign-up'}>Sign Up</Link>
-        </div>
+        <ul className="header__buttons">
+          <li>
+            <Link to={'/sign-in'}>Sign In</Link>
+          </li>
+          <li>
+            <Link to={'/sign-up'}>Sign Up</Link>
+          </li>
+        </ul>
       </div>
     </header>
   );
