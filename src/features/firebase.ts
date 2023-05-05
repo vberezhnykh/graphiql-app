@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import { FirebaseError, initializeApp } from 'firebase/app';
 import {
   GoogleAuthProvider,
   getAuth,
@@ -9,6 +9,7 @@ import {
   signOut,
 } from 'firebase/auth';
 import { getFirestore, query, getDocs, collection, where, addDoc } from 'firebase/firestore';
+import { toast } from 'react-toastify';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAWTOjh8H0QNWom3TwtXEh2nmVba0vAszY',
@@ -26,7 +27,7 @@ const db = getFirestore(app);
 export const logInWithEmailAndPassword = async (email: string, password: string) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error(error);
   }
 };
@@ -34,7 +35,8 @@ export const logInWithEmailAndPassword = async (email: string, password: string)
 export const registerWithEmailAndPassword = async (
   name: string,
   email: string,
-  password: string
+  password: string,
+  redirectToMainPage: () => void
 ) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -45,8 +47,12 @@ export const registerWithEmailAndPassword = async (
       authProvider: 'local',
       email,
     });
+    redirectToMainPage();
   } catch (error) {
-    console.error(error);
+    if (!(error instanceof FirebaseError)) return;
+    if (error.code === 'auth/email-already-in-use') {
+      toast('Email already in use');
+    }
   }
 };
 

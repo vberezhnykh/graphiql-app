@@ -1,5 +1,7 @@
 import { ErrorMessage } from '@hookform/error-message';
 import { useForm } from 'react-hook-form';
+import { registerWithEmailAndPassword } from '../features/firebase';
+import { useNavigate } from 'react-router-dom';
 
 type FormData = {
   name: string;
@@ -15,8 +17,20 @@ const RegisterForm = () => {
     formState: { errors },
   } = useForm<FormData>({ reValidateMode: 'onSubmit', criteriaMode: 'all' });
 
+  const navigate = useNavigate();
+
+  const redirectToMainPage = () => {
+    // successfully registered popup
+    alert('successfully registered');
+    setTimeout(() => {
+      navigate('/main');
+    }, 3000);
+  };
+
   const onSubmit = (data: FormData) => {
-    console.log(data);
+    const { name, email, password } = data;
+    registerWithEmailAndPassword(name, email, password, redirectToMainPage);
+    console.log(1);
   };
 
   const nameRegex = /^[A-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/g;
