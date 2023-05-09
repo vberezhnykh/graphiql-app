@@ -1,0 +1,80 @@
+.editor {
+  width: 100%;
+  
+		&__container {
+      outline: 1px solid pink;
+      width: 100%;
+      height: 70vh;
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+		}
+
+		&__docs {
+      outline: 1px solid green;
+		}
+
+		&__header {
+		}
+
+    &__textarea-request {
+      flex: 1 1 auto;
+    }
+
+		&__request {
+      outline: 1px solid blue;
+      position: relative;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+		}
+
+		&__request-container {
+      display: flex;
+		}
+
+		&__headers {
+      flex: 1 1 50%;
+      outline: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+		}
+
+		&__request-inner-header {
+		}
+
+		&__request-inner-body {
+		}
+
+		&__variables {
+      flex: 1 1 50%;
+      outline: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+		}
+
+		&__request-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+		}
+
+		&__response {
+      outline: 1px solid orange;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+		}
+
+    &__textarea-response {
+      flex: 1 1 auto;
+    }
+}
+.docs-header {
+}
+.request-header {
+}
+.response-header {
+}
