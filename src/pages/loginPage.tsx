@@ -18,8 +18,8 @@ const Login = () => {
 
   return (
     <>
-      <header>
-        Not a member? <Link to={'/register'}>Sign Up now</Link>
+      <header className="login-header">
+        Not a member? <Link to={'/register'}>Sign up now</Link>
       </header>
       <ToastContainer />
       <main className="main--flex">

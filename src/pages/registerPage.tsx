@@ -15,7 +15,7 @@ const Register = () => {
   }, [user]);
   return (
     <>
-      <header>
+      <header className="register-header">
         Already have an account? <Link to={'/login'}>Sign In</Link>
       </header>
       <ToastContainer />
