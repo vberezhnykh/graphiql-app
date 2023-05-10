@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../features/firebase';
 
-const LoginPage = () => {
+const Login = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ const LoginPage = () => {
   return (
     <>
       <header>
-        Not a member? <Link to={'/sign-up'}>Sign Up now</Link>
+        Not a member? <Link to={'/register'}>Sign Up now</Link>
       </header>
       <ToastContainer />
       <main className="main--flex">
@@ -30,4 +30,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;

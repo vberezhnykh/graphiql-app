@@ -6,7 +6,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../features/firebase';
 import { useEffect } from 'react';
 
-const SignUpPage = () => {
+const Register = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ const SignUpPage = () => {
   return (
     <>
       <header>
-        Already have an account? <Link to={'/sign-in'}>Sign In</Link>
+        Already have an account? <Link to={'/login'}>Sign In</Link>
       </header>
       <ToastContainer />
       <main className="main--flex">
@@ -27,4 +27,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default Register;

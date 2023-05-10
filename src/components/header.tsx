@@ -47,10 +47,10 @@ const Header = () => {
         ) : (
           <ul className="header__buttons">
             <li>
-              <Link to={'/sign-in'}>Sign In</Link>
+              <Link to={'/login'}>Sign In</Link>
             </li>
             <li>
-              <Link to={'/sign-up'}>Sign Up</Link>
+              <Link to={'/register'}>Sign Up</Link>
             </li>
           </ul>
         )}

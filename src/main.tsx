@@ -7,16 +7,16 @@ import MainPage from './pages/mainPage';
 import ErrorPage from './pages/errorPage';
 import { store } from './store/store';
 import { Provider } from 'react-redux';
-import SignUpPage from './pages/signUpPage';
-import LoginPage from './pages/loginPage';
+import Register from './pages/registerPage';
+import Login from './pages/loginPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <HomePage />,
   },
-  { path: '/sign-in', element: <LoginPage /> },
-  { path: '/sign-up', element: <SignUpPage /> },
+  { path: '/login', element: <Login /> },
+  { path: '/register', element: <Register /> },
   { path: '/main', element: <MainPage /> },
   { path: '*', element: <ErrorPage /> },
 ]);
