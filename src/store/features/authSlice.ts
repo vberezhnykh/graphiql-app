@@ -1,22 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 type AuthState = {
-  userToken: string;
   userName: string;
 };
 
 const initialState: AuthState = {
-  userToken: sessionStorage.getItem('Auth Token') ?? '',
-  userName: sessionStorage.getItem('userName') ?? '',
+  userName: '',
 };
 
 const authSlice = createSlice({
-  name: 'search',
+  name: 'auth',
   initialState,
   reducers: {
-    saveUserToken(state, action) {
-      state.userToken = action.payload;
-    },
     saveUserName(state, { payload }) {
       state.userName = payload;
     },
@@ -25,4 +20,4 @@ const authSlice = createSlice({
 
 export const authReducer = authSlice.reducer;
 
-export const { saveUserToken, saveUserName } = authSlice.actions;
+export const { saveUserName } = authSlice.actions;

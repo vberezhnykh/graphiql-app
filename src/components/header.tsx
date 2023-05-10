@@ -1,9 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { logout } from '../features/firebase';
-import { saveUserName, saveUserToken } from '../store/features/authSlice';
-import { toast } from 'react-toastify';
+import { useAppDispatch } from '../store/hooks';
+import { auth, logout } from '../features/firebase';
+import { saveUserName } from '../store/features/authSlice';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Header = () => {
   const navLinks = [
@@ -17,9 +17,8 @@ const Header = () => {
     },
   ];
 
-  const userToken = useAppSelector((state) => state.auth.userToken);
+  const [user] = useAuthState(auth);
   const dispath = useAppDispatch();
-  const navigate = useNavigate();
 
   return (
     <header className="header">
@@ -35,15 +34,11 @@ const Header = () => {
             </NavLink>
           ))}
         </nav>
-        {userToken ? (
+        {user ? (
           <button
             onClick={() => {
               logout();
-              sessionStorage.removeItem('Auth Token');
-              sessionStorage.removeItem('userName');
-              dispath(saveUserToken(''));
               dispath(saveUserName(''));
-              navigate('/');
             }}
           >
             Sign out

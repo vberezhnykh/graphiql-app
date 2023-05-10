@@ -1,9 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import RegisterForm from '../components/registerForm';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../features/firebase';
+import { useEffect } from 'react';
 
 const SignUpPage = () => {
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) navigate('/main');
+  }, [user]);
   return (
     <>
       <header>

@@ -9,15 +9,14 @@ import { store } from './store/store';
 import { Provider } from 'react-redux';
 import SignUpPage from './pages/signUpPage';
 import LoginPage from './pages/loginPage';
-import loader from './features/redirect';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <HomePage />,
   },
-  { path: '/sign-in', element: <LoginPage />, loader },
-  { path: '/sign-up', element: <SignUpPage />, loader },
+  { path: '/sign-in', element: <LoginPage /> },
+  { path: '/sign-up', element: <SignUpPage /> },
   { path: '/main', element: <MainPage /> },
   { path: '*', element: <ErrorPage /> },
 ]);

@@ -1,15 +1,12 @@
 import { FirebaseError, initializeApp } from 'firebase/app';
 import {
-  GoogleAuthProvider,
   getAuth,
-  signInWithPopup,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
-  User,
 } from 'firebase/auth';
-import { getFirestore, query, getDocs, collection, where, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 
 const firebaseConfig = {
@@ -25,14 +22,9 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
-export const logInWithEmailAndPassword = async (
-  email: string,
-  password: string,
-  redirectToMainPage: (user: User) => void
-) => {
+export const logInWithEmailAndPassword = async (email: string, password: string) => {
   try {
-    const res = await signInWithEmailAndPassword(auth, email, password);
-    redirectToMainPage(res.user);
+    await signInWithEmailAndPassword(auth, email, password);
   } catch (error: unknown) {
     console.error(error);
     if (!(error instanceof FirebaseError)) return;
@@ -44,8 +36,7 @@ export const logInWithEmailAndPassword = async (
 export const registerWithEmailAndPassword = async (
   name: string,
   email: string,
-  password: string,
-  redirectToMainPage: () => void
+  password: string
 ) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -56,7 +47,6 @@ export const registerWithEmailAndPassword = async (
       authProvider: 'local',
       email,
     });
-    redirectToMainPage();
   } catch (error) {
     if (!(error instanceof FirebaseError)) return;
     if (error.code === 'auth/email-already-in-use') {
