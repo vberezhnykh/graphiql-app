@@ -44,20 +44,9 @@
 }
 
 .form__submit {
+  @include button();
   margin-top: 2.2rem;
   margin-left: 1.2rem;
-  display: block;
-  padding: 1rem 1.6rem;
-  height: 4rem;
-  width: 20rem;
   background-color: $blue;
-  color: $white;
-  border: none;
-  border-radius: 0.8rem;
-  font-weight: bold;
-  cursor: pointer;
-
-  &:hover {
-    opacity: 0.8;
-  }
+  width: 20rem;
 }

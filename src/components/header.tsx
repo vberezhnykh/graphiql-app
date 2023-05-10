@@ -36,6 +36,7 @@ const Header = () => {
         </nav>
         {user ? (
           <button
+            className="logout-button"
             onClick={() => {
               logout();
               dispath(saveUserName(''));

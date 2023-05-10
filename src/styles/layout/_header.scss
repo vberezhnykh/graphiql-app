@@ -37,18 +37,12 @@
   padding: 0;
 
   a {
-    display: block;
+    @include button();
     background-color: $blue;
-    color: $white;
-    border: none;
-    border-radius: 0.8rem;
-    font-weight: bold;
-    padding: 1rem 1.6rem;
-    line-height: 100%;
-    text-decoration: none;
-
-    &:hover {
-      opacity: 0.8;
-    }
   }
+}
+
+.logout-button {
+  @include button();
+  background-color: $gray;
 }
