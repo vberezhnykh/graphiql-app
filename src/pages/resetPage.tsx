@@ -5,13 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
+import { Spin } from 'antd';
 
 type FormData = {
   email: string;
 };
 
 const Reset = () => {
-  const [user] = useAuthState(auth);
+  const [user, isLoading] = useAuthState(auth);
   const navigate = useNavigate();
   const {
     register,
@@ -26,10 +27,18 @@ const Reset = () => {
   };
 
   useEffect(() => {
+    if (isLoading) return;
     if (user) navigate('/main');
-  }, [user]);
+  }, [user, isLoading]);
 
   const emailRegex = /\S+@\S+\.\S+/;
+
+  if (isLoading)
+    return (
+      <main className="main--flex">
+        <Spin size="large" />
+      </main>
+    );
 
   return (
     <>

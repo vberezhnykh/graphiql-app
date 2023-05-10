@@ -5,14 +5,23 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../features/firebase';
 import { useEffect } from 'react';
+import { Spin } from 'antd';
 
 const Register = () => {
-  const [user] = useAuthState(auth);
+  const [user, isLoading] = useAuthState(auth);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (user) navigate('/main');
-  }, [user]);
+  }, [user, isLoading]);
+
+  if (isLoading)
+    return (
+      <main className="main--flex">
+        <Spin size="large" />
+      </main>
+    );
+
   return (
     <>
       <header className="register-header">

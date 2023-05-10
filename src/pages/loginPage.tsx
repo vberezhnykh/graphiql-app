@@ -4,17 +4,23 @@ import { ToastContainer } from 'react-toastify';
 import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../features/firebase';
+import { Spin } from 'antd';
 
 const Login = () => {
-  const [user, loading] = useAuthState(auth);
+  const [user, isLoading] = useAuthState(auth);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (loading) {
-      return;
-    }
+    if (isLoading) return;
     if (user) navigate('/main');
-  }, [user, loading]);
+  }, [user, isLoading]);
+
+  if (isLoading)
+    return (
+      <main className="main--flex">
+        <Spin size="large"></Spin>
+      </main>
+    );
 
   return (
     <>

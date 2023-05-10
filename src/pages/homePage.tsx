@@ -6,10 +6,11 @@ import { auth, db } from '../features/firebase';
 import { User } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { saveUserName } from '../store/features/authSlice';
+import { Space, Spin } from 'antd';
 
 const HomePage = () => {
   const name = useAppSelector((store) => store.auth.userName);
-  const [user] = useAuthState(auth);
+  const [user, isLoading] = useAuthState(auth);
   const dispatch = useAppDispatch();
   const fetchUserName = async (user: User) => {
     const q = query(collection(db, 'users'), where('uid', '==', user.uid));
@@ -22,8 +23,14 @@ const HomePage = () => {
   useEffect(() => {
     if (!user) return;
     fetchUserName(user);
-  }),
-    [user];
+  }, [user, isLoading]);
+
+  if (isLoading)
+    return (
+      <main className="main--flex">
+        <Spin size="large"></Spin>
+      </main>
+    );
 
   return (
     <>
