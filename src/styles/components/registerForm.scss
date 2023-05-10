@@ -2,22 +2,10 @@
   font-weight: bold;
 }
 
-@mixin labelBlock {
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-}
-
 .user__name,
-.user__login,
 .user__email,
 .user__password {
   @include labelBlock;
-}
-
-.user__email,
-.user__password {
   input {
     width: 100%;
   }

@@ -1,10 +1,3 @@
-@mixin labelBlock {
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-}
-
 .login,
 .password {
   @include labelBlock();
