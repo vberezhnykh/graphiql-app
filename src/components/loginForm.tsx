@@ -1,6 +1,7 @@
 import { ErrorMessage } from '@hookform/error-message';
 import { useForm } from 'react-hook-form';
 import { logInWithEmailAndPassword } from '../features/firebase';
+import { Link } from 'react-router-dom';
 
 type FormData = {
   login: string;
@@ -44,7 +45,12 @@ const LoginForm = () => {
           />
         </fieldset>
         <fieldset className="form-field password">
-          <label htmlFor="password">Password</label>
+          <div className="label-link-container">
+            <label htmlFor="password">Password</label>
+            <Link to={'/reset'} className="reset-link">
+              Forgot password?
+            </Link>
+          </div>
           <input type="password" id="password" className="text-input" {...register('password')} />
         </fieldset>
         <input type="submit" value="Sign In" className="form__submit" />

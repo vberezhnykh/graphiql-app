@@ -1,3 +1,8 @@
 .login-header {
   @include header-with-link();
 }
+
+.reset-link {
+  color: $blue;
+  text-decoration: none;
+}

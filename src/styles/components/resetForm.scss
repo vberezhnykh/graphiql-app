@@ -1,0 +1,10 @@
+.reset-form {
+  font-weight: bold;
+}
+
+.reset {
+  @include labelBlock;
+  input {
+    width: 100%;
+  }
+}

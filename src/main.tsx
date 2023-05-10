@@ -9,6 +9,7 @@ import { store } from './store/store';
 import { Provider } from 'react-redux';
 import Register from './pages/registerPage';
 import Login from './pages/loginPage';
+import Reset from './pages/resetPage';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
   },
   { path: '/login', element: <Login /> },
   { path: '/register', element: <Register /> },
+  { path: '/reset', element: <Reset /> },
   { path: '/main', element: <MainPage /> },
   { path: '*', element: <ErrorPage /> },
 ]);
