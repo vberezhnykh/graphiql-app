@@ -1,4 +1,4 @@
-import { baseQueryRequest } from '../utils/constats';
+import { baseQueryRequest } from '../utils/constants';
 import { getData } from '../api/api';
 import React, { useRef, useState } from 'react';
 
@@ -40,13 +40,9 @@ const IDE = () => {
         </div>
         <div className="editor__response">
           <h4 className="editor__header response-header">Response</h4>
-          <textarea
-            className="editor__textarea-response"
-            name=""
-            id=""
-            value={message}
-            readOnly
-          ></textarea>
+          <textarea className="editor__textarea-response" name="" id="" value={message} readOnly>
+            <pre></pre>
+          </textarea>
         </div>
       </div>
     </div>

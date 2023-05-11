@@ -1,3 +1,5 @@
+import { apiErrorMessage } from '../utils/constants';
+
 export async function getData(data: string | undefined | Error) {
   try {
     const response = await fetch(`https://rickandmortyapi.com/graphql`, {
@@ -12,6 +14,6 @@ export async function getData(data: string | undefined | Error) {
     const res = await response.json();
     return JSON.stringify(res);
   } catch (e) {
-    alert('You must provide a query to the request field');
+    alert(apiErrorMessage);
   }
 }
