@@ -1,3 +1,4 @@
+import { baseQueryRequest } from '../utils/constats';
 import { getData } from '../api/api';
 import React, { useRef, useState } from 'react';
 
@@ -13,7 +14,13 @@ const IDE = () => {
         </div>
         <div className="editor__request">
           <h4 className="editor__header request-header">Request</h4>
-          <textarea className="editor__textarea-request" name="" id="" ref={ref}></textarea>
+          <textarea
+            className="editor__textarea-request"
+            name=""
+            id=""
+            ref={ref}
+            placeholder={baseQueryRequest}
+          ></textarea>
           <div className="editor__request-container">
             <div className="editor__headers">
               <h5 className="editor__request-inner-header">Headers</h5>

@@ -12,19 +12,6 @@ export async function getData(data: string | undefined | Error) {
     const res = await response.json();
     return JSON.stringify(res);
   } catch (e) {
-    const error = ensureError(e);
-    return error.message;
+    alert('You must provide a query to the request field');
   }
-}
-
-export function ensureError(value: unknown): Error {
-  if (value instanceof Error) return value;
-
-  let stringified = '[Unable to stringify the thrown value]';
-  try {
-    stringified = JSON.stringify(value);
-  } catch {}
-
-  const error = new Error(`This value was thrown as is, not through an Error: ${stringified}`);
-  return error;
 }
