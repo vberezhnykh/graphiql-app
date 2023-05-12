@@ -1,10 +1,23 @@
 import { baseQueryRequest } from '../utils/constants';
 import { getData } from '../api/api';
 import React, { useRef, useState } from 'react';
+import { Tabs } from './tabs';
+import { TTab } from 'types';
 
 const IDE = () => {
   const [message, setMessage] = useState<string | undefined>('');
   const ref = useRef<HTMLTextAreaElement>(null);
+
+  const tabs: TTab[] = [
+    { id: '1', label: 'Headers' },
+    { id: '2', label: 'Variables' },
+  ];
+
+  const [selectedTabId, setSelectedTabId] = useState(tabs[0].id);
+
+  const handleTabClick = (id: string | number) => {
+    setSelectedTabId(id);
+  };
 
   return (
     <div className="editor">
@@ -22,13 +35,14 @@ const IDE = () => {
             placeholder={baseQueryRequest}
           ></textarea>
           <div className="editor__request-container">
-            <div className="editor__headers">
-              <h5 className="editor__request-inner-header">Headers</h5>
-              <div className="editor__request-inner-body">Headers body</div>
-            </div>
-            <div className="editor__variables">
-              <h5 className="editor__request-inner-header">Variables</h5>
-              <div className="editor__request-inner-body">Variables body</div>
+            <Tabs selectedId={selectedTabId} tabs={tabs} onClick={handleTabClick} />
+            <div className="tabs-container">
+              {selectedTabId === tabs[0].id && (
+                <textarea className="tab-textarea" placeholder="Type headers here"></textarea>
+              )}
+              {selectedTabId === tabs[1].id && (
+                <textarea className="tab-textarea" placeholder="Type variables here"></textarea>
+              )}
             </div>
           </div>
           <button
@@ -40,7 +54,14 @@ const IDE = () => {
         </div>
         <div className="editor__response">
           <h4 className="editor__header response-header">Response</h4>
-          <textarea className="editor__textarea-response" name="" id="" value={message} readOnly>
+          <textarea
+            className="editor__textarea-response"
+            name=""
+            id=""
+            value={message}
+            readOnly
+            placeholder="Here you get response from API"
+          >
             <pre></pre>
           </textarea>
         </div>

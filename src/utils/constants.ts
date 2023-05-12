@@ -7,3 +7,5 @@ export const baseQueryRequest = `query {
 } `;
 
 export const apiErrorMessage = 'You must provide a query to the request field';
+
+export const tabsContent = [{ title: 'Headers' }, { title: 'Variables' }];
