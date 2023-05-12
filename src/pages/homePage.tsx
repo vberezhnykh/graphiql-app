@@ -6,7 +6,7 @@ import { auth, db } from '../features/firebase';
 import { User } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { saveUserName } from '../store/features/authSlice';
-import { Space, Spin } from 'antd';
+import { Spin } from 'antd';
 
 const HomePage = () => {
   const name = useAppSelector((store) => store.auth.userName);

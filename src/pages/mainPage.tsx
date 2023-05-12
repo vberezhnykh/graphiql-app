@@ -4,6 +4,7 @@ import { auth } from '../features/firebase';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Spin } from 'antd';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const MainPage = () => {
   const [user, isLoading] = useAuthState(auth);
