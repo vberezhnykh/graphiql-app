@@ -12,7 +12,8 @@
     "eslint": "eslint --fix . --ext .ts --ext .js --ext .tsx",
     "lint": "npm run eslint && npm run check-types",
     "test": "vitest && vitest run --coverage",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "docs-gen": "npx spectaql config.yml"
   },
   "dependencies": {
     "@mswjs/interceptors": "^0.22.10",
@@ -55,9 +56,11 @@
     "jsdom": "^21.1.0",
     "msw": "^1.2.1",
     "prettier": "^2.8.4",
+    "spectaql": "^2.0.8",
     "typescript": "^4.9.5",
     "vite": "^4.1.0",
     "vite-plugin-eslint": "^1.8.1",
-    "vitest": "^0.29.2"
+    "vitest": "^0.29.2",
+    "clsx": "^1.2.1"
   }
 }
