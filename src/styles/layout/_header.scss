@@ -19,7 +19,7 @@
   list-style: none;
   padding: 0;
   gap: 2rem;
-  
+
   a {
     text-decoration: none;
   }
@@ -28,4 +28,21 @@
 .nav-list__item--active {
   font-weight: bold;
   color: $light-blue;
+}
+
+.header__buttons {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+
+  a {
+    @include button();
+    background-color: $blue;
+  }
+}
+
+.logout-button {
+  @include button();
+  background-color: $gray;
 }

@@ -16,18 +16,23 @@
     "docs-gen": "npx spectaql config.yml"
   },
   "dependencies": {
+    "@hookform/error-message": "^2.0.1",
     "@mswjs/interceptors": "^0.22.10",
     "@reduxjs/toolkit": "^1.9.3",
     "@types/react-redux": "^7.1.25",
     "@types/uuid": "^9.0.1",
     "@typescript-eslint/parser": "^5.54.1",
+    "antd": "^5.4.7",
+    "firebase": "^9.21.0",
     "lodash": "^4.17.21",
     "node-fetch": "^3.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-firebase-hooks": "^5.1.1",
     "react-hook-form": "^7.43.8",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.2",
+    "react-toastify": "^9.1.2",
     "sass": "^1.58.3",
     "uuid": "^9.0.0",
     "vite-plugin-checker": "^0.5.6"

@@ -1,4 +1,9 @@
+import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { useAppDispatch } from '../store/hooks';
+import { auth, logout } from '../features/firebase';
+import { saveUserName } from '../store/features/authSlice';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Header = () => {
   const navLinks = [
@@ -11,6 +16,9 @@ const Header = () => {
       text: 'Main',
     },
   ];
+
+  const [user] = useAuthState(auth);
+  const dispath = useAppDispatch();
 
   return (
     <header className="header">
@@ -26,10 +34,26 @@ const Header = () => {
             </NavLink>
           ))}
         </nav>
-        <div>
-          <button>Sign In</button>
-          <button>Sign Up</button>
-        </div>
+        {user ? (
+          <button
+            className="logout-button"
+            onClick={() => {
+              logout();
+              dispath(saveUserName(''));
+            }}
+          >
+            Sign out
+          </button>
+        ) : (
+          <ul className="header__buttons">
+            <li>
+              <Link to={'/login'}>Sign In</Link>
+            </li>
+            <li>
+              <Link to={'/register'}>Sign Up</Link>
+            </li>
+          </ul>
+        )}
       </div>
     </header>
   );

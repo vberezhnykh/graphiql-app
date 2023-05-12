@@ -1,0 +1,12 @@
+.register-form {
+  font-weight: bold;
+}
+
+.user__name,
+.user__email,
+.user__password {
+  @include labelBlock;
+  input {
+    width: 100%;
+  }
+}

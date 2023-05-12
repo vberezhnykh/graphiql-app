@@ -7,3 +7,39 @@
     visibility: visible;
   }
 }
+
+@mixin button {
+  display: block;
+  color: $white;
+  border: none;
+  border-radius: 0.8rem;
+  font-weight: bold;
+  padding: 1rem 1.6rem;
+  line-height: 100%;
+  text-decoration: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+@mixin labelBlock {
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@mixin header-with-link {
+  height: 4rem;
+  font-size: 1.8rem;
+  padding: 1rem;
+  position: sticky;
+
+  a {
+    font-weight: bold;
+    color: $blue;
+  }
+}

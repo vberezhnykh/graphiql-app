@@ -1,0 +1,7 @@
+.login,
+.password {
+  @include labelBlock();
+  input {
+    width: 100%;
+  }
+}
