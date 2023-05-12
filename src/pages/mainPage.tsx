@@ -1,4 +1,4 @@
-import { useAuthState } from 'react-firebase-hooks/auth';
+import IDE from '../components/ide';
 import Header from '../components/header';
 import { auth } from '../features/firebase';
 import { useEffect } from 'react';
@@ -24,7 +24,9 @@ const MainPage = () => {
   return (
     <>
       <Header />
-      <main className="main--flex main">This is Main Page</main>
+      <main className="main--flex main">
+        <IDE />
+      </main>
       <footer>Footer Template</footer>
     </>
   );

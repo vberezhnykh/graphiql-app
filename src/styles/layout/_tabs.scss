@@ -1,0 +1,28 @@
+.Tab {
+  padding: 16px 24px;
+  border: 1px solid blue;
+  cursor: pointer;
+  transition: all 0.15s;
+
+
+  &__selected {
+    text-decoration: underline;
+  }
+
+  &:hover {
+    background-color: lightgrey;
+  }
+
+  &Label {
+    font-size: 1.2rem;
+    color: blue;
+
+    &__selected {
+      color: purple;
+    }
+  }
+}
+
+.Tab:nth-child(2) {
+  border-radius: 0 0 0 1rem;
+}
