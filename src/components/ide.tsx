@@ -10,9 +10,12 @@ const IDE = () => {
   const [headersMessage, setHeadersMessage] = useState(`{
         "Content-Type": "application/json"
       }`);
-
-  const changeState = (event: ChangeEvent<HTMLTextAreaElement>) => {
+  const changeHeadersMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setHeadersMessage(event.target.value);
+  };
+  const [variablesMessage, setVariablesMessage] = useState(`{ "name": "Rick" }`);
+  const changeVariablesMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setVariablesMessage(event.target.value);
   };
 
   const tabs: TTab[] = [
@@ -49,18 +52,29 @@ const IDE = () => {
                   className="tab-textarea"
                   placeholder="Type headers here"
                   value={headersMessage}
-                  onChange={changeState}
+                  onChange={changeHeadersMessage}
                 ></textarea>
               )}
               {selectedTabId === tabs[1].id && (
-                <textarea className="tab-textarea" placeholder="Type variables here"></textarea>
+                <textarea
+                  className="tab-textarea"
+                  placeholder="Type variables here"
+                  value={variablesMessage}
+                  onChange={changeVariablesMessage}
+                ></textarea>
               )}
             </div>
           </div>
           <button
             className="editor__request-button"
             onClick={async () =>
-              setMessage(await getData(JSON.parse(headersMessage), ref?.current?.value))
+              setMessage(
+                await getData(
+                  JSON.parse(headersMessage),
+                  ref?.current?.value,
+                  JSON.parse(variablesMessage)
+                )
+              )
             }
           >
             Request
