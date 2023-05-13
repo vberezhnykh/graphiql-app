@@ -1,4 +1,4 @@
-import { baseQueryRequest } from '../utils/constants';
+import { apiHeadersExample, apiVariablesExample, baseQueryRequest } from '../utils/constants';
 import { getData } from '../api/api';
 import React, { ChangeEvent, useRef, useState } from 'react';
 import { Tabs } from './tabs';
@@ -7,13 +7,11 @@ import { TTab } from 'types';
 const IDE = () => {
   const [message, setMessage] = useState<string | undefined>('');
   const ref = useRef<HTMLTextAreaElement>(null);
-  const [headersMessage, setHeadersMessage] = useState(`{
-        "Content-Type": "application/json"
-      }`);
+  const [headersMessage, setHeadersMessage] = useState(apiHeadersExample);
   const changeHeadersMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setHeadersMessage(event.target.value);
   };
-  const [variablesMessage, setVariablesMessage] = useState(`{ "name": "Rick" }`);
+  const [variablesMessage, setVariablesMessage] = useState(apiVariablesExample);
   const changeVariablesMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setVariablesMessage(event.target.value);
   };
