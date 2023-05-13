@@ -1,12 +1,19 @@
 import { baseQueryRequest } from '../utils/constants';
 import { getData } from '../api/api';
-import React, { useRef, useState } from 'react';
+import React, { ChangeEvent, useRef, useState } from 'react';
 import { Tabs } from './tabs';
 import { TTab } from 'types';
 
 const IDE = () => {
   const [message, setMessage] = useState<string | undefined>('');
   const ref = useRef<HTMLTextAreaElement>(null);
+  const [headersMessage, setHeadersMessage] = useState(`{
+        "Content-Type": "application/json"
+      }`);
+
+  const changeState = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setHeadersMessage(event.target.value);
+  };
 
   const tabs: TTab[] = [
     { id: '1', label: 'Headers' },
@@ -38,7 +45,12 @@ const IDE = () => {
             <Tabs selectedId={selectedTabId} tabs={tabs} onClick={handleTabClick} />
             <div className="tabs-container">
               {selectedTabId === tabs[0].id && (
-                <textarea className="tab-textarea" placeholder="Type headers here"></textarea>
+                <textarea
+                  className="tab-textarea"
+                  placeholder="Type headers here"
+                  value={headersMessage}
+                  onChange={changeState}
+                ></textarea>
               )}
               {selectedTabId === tabs[1].id && (
                 <textarea className="tab-textarea" placeholder="Type variables here"></textarea>
@@ -47,7 +59,9 @@ const IDE = () => {
           </div>
           <button
             className="editor__request-button"
-            onClick={async () => setMessage(await getData(ref?.current?.value))}
+            onClick={async () =>
+              setMessage(await getData(JSON.parse(headersMessage), ref?.current?.value))
+            }
           >
             Request
           </button>

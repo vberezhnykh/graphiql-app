@@ -1,12 +1,10 @@
 import { apiErrorMessage } from '../utils/constants';
 
-export async function getData(data: string | undefined | Error) {
+export async function getData(headersInput: Headers | undefined, data: string | undefined | Error) {
   try {
     const response = await fetch(`https://rickandmortyapi.com/graphql`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: headersInput,
       body: JSON.stringify({
         query: data,
       }),
