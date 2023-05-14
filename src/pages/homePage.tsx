@@ -10,7 +10,6 @@ import { Spin } from 'antd';
 import Footer from '../components/footer';
 
 const HomePage = () => {
-  const name = useAppSelector((store) => store.auth.userName);
   const [user, isLoading] = useAuthState(auth);
   const dispatch = useAppDispatch();
   const fetchUserName = async (user: User) => {
@@ -36,7 +35,24 @@ const HomePage = () => {
   return (
     <>
       <Header />
-      <main className="main main--flex">{name ? `Hello, ${name}` : `Please login first.`}</main>
+      <main className="main main--flex main__home">
+        <p>GraphiQL is a playground/IDE for graphQL requests.</p>
+        <p>
+          Made by Valentin Berezhnykh and Yan Chorny as a{' '}
+          <a
+            href="https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/graphiql.md"
+            target="_blank"
+            rel="noreferrer"
+          >
+            final task
+          </a>{' '}
+          on the{' '}
+          <a href="https://rs.school/react/" target="_blank" rel="noreferrer">
+            React course
+          </a>{' '}
+          organized by RSSchool.
+        </p>
+      </main>
       <Footer />
     </>
   );
