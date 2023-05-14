@@ -7,6 +7,7 @@ import { User } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { saveUserName } from '../store/features/authSlice';
 import { Spin } from 'antd';
+import Footer from '../components/footer';
 
 const HomePage = () => {
   const name = useAppSelector((store) => store.auth.userName);
@@ -36,7 +37,7 @@ const HomePage = () => {
     <>
       <Header />
       <main className="main main--flex">{name ? `Hello, ${name}` : `Please login first.`}</main>
-      <footer>Footer Template</footer>
+      <Footer />
     </>
   );
 };

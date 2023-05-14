@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { Spin } from 'antd';
+import Footer from '../components/footer';
 
 type FormData = {
   email: string;
@@ -71,7 +72,7 @@ const Reset = () => {
           </form>
         </div>
       </main>
-      <footer>Footer Template</footer>
+      <Footer />
     </>
   );
 };

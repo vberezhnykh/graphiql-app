@@ -50,7 +50,9 @@ const Header = () => {
               <Link to={'/login'}>Sign In</Link>
             </li>
             <li>
-              <Link to={'/register'}>Sign Up</Link>
+              <Link to={'/register'} className="header__sign-up">
+                Sign Up
+              </Link>
             </li>
           </ul>
         )}
