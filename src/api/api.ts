@@ -3,7 +3,7 @@ import { queryErrorMessage, baseApiGraphQLAddress } from '../utils/constants';
 
 export async function getData(
   headersInput: Headers | undefined,
-  data: string | undefined | Error,
+  queryInput: string | undefined | Error,
   variablesInput: undefined | TVariablesInput
 ) {
   try {
@@ -11,7 +11,7 @@ export async function getData(
       method: 'POST',
       headers: headersInput,
       body: JSON.stringify({
-        query: data,
+        query: queryInput,
         variables: variablesInput,
       }),
     });

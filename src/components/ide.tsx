@@ -5,16 +5,18 @@ import { Tabs } from './tabs';
 import { TTab } from 'types';
 
 const IDE = () => {
-  const [message, setMessage] = useState<string | undefined>('');
+  const [queryMessage, setQueryMessage] = useState<string | undefined>('');
   const ref = useRef<HTMLTextAreaElement>(null);
   const [headersMessage, setHeadersMessage] = useState(apiHeadersExample);
   const changeHeadersMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setHeadersMessage(event.target.value);
   };
+  const checkHeadersMessage = headersMessage ? headersMessage : apiHeadersExample;
   const [variablesMessage, setVariablesMessage] = useState(apiVariablesExample);
   const changeVariablesMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setVariablesMessage(event.target.value);
   };
+  const checkVariablesMessage = variablesMessage ? variablesMessage : apiVariablesExample;
 
   const tabs: TTab[] = [
     { id: '1', label: 'Headers' },
@@ -41,6 +43,7 @@ const IDE = () => {
             id=""
             ref={ref}
             placeholder={baseQueryRequest}
+            defaultValue={baseQueryRequest}
           ></textarea>
           <div className="editor__request-container">
             <Tabs selectedId={selectedTabId} tabs={tabs} onClick={handleTabClick} />
@@ -48,7 +51,7 @@ const IDE = () => {
               {selectedTabId === tabs[0].id && (
                 <textarea
                   className="tab-textarea"
-                  placeholder="Type headers here"
+                  placeholder={apiHeadersExample}
                   value={headersMessage}
                   onChange={changeHeadersMessage}
                 ></textarea>
@@ -56,7 +59,7 @@ const IDE = () => {
               {selectedTabId === tabs[1].id && (
                 <textarea
                   className="tab-textarea"
-                  placeholder="Type variables here"
+                  placeholder={apiVariablesExample}
                   value={variablesMessage}
                   onChange={changeVariablesMessage}
                 ></textarea>
@@ -66,11 +69,11 @@ const IDE = () => {
           <button
             className="editor__request-button"
             onClick={async () =>
-              setMessage(
+              setQueryMessage(
                 await getData(
-                  JSON.parse(headersMessage),
+                  JSON.parse(checkHeadersMessage),
                   ref?.current?.value,
-                  JSON.parse(variablesMessage)
+                  JSON.parse(checkVariablesMessage)
                 )
               )
             }
@@ -84,7 +87,7 @@ const IDE = () => {
             className="editor__textarea-response"
             name=""
             id=""
-            value={message}
+            value={queryMessage}
             readOnly
             placeholder="Here you get response from API"
           >
