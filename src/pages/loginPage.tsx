@@ -28,7 +28,7 @@ const Login = () => {
       <header className="login-header">
         Not a member? <Link to={'/register'}>Sign up now</Link>
       </header>
-      <ToastContainer />
+      <ToastContainer className={'toast-container'} />
       <main className="main--flex">
         <LoginForm />
       </main>

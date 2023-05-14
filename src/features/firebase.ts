@@ -28,8 +28,8 @@ export const logInWithEmailAndPassword = async (email: string, password: string)
   } catch (error: unknown) {
     console.error(error);
     if (!(error instanceof FirebaseError)) return;
-    if (error.code === 'auth/wrong-password') toast('Invalid password');
-    if (error.code === 'auth/user-not-found') toast('User not found');
+    if (error.code === 'auth/wrong-password') toast.error('Invalid password');
+    if (error.code === 'auth/user-not-found') toast.error('User not found');
   }
 };
 
@@ -50,7 +50,7 @@ export const registerWithEmailAndPassword = async (
   } catch (error) {
     if (!(error instanceof FirebaseError)) return;
     if (error.code === 'auth/email-already-in-use') {
-      toast('Email already in use');
+      toast.error('Email already in use');
     }
   }
 };
@@ -60,7 +60,7 @@ export const sendPasswordResetOnEmail = async (email: string) => {
     sendPasswordResetEmail(auth, email);
     alert('reset link send');
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
