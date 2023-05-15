@@ -6,7 +6,7 @@ import { TTab } from 'types';
 import { useForm } from 'react-hook-form';
 import { FormInputState } from '../utils/interfaces';
 import { InputQueryHeaders } from './inputQueryHeaders';
-import { validateQueryHeaders, validateQueryVariables } from '../utils/functions';
+import { validateQueryHeadersInput, validateQueryVariablesInput } from '../utils/functions';
 import { InputQueryVariables } from './inputQueryVariables';
 
 const IDE = () => {
@@ -16,12 +16,10 @@ const IDE = () => {
   const changeHeadersMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setHeadersMessage(event.target.value);
   };
-  // const checkHeadersMessage = headersMessage ? headersMessage : apiHeadersExample;
   const [variablesMessage, setVariablesMessage] = useState(apiVariablesExample);
   const changeVariablesMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setVariablesMessage(event.target.value);
   };
-  const checkVariablesMessage = variablesMessage ? variablesMessage : apiVariablesExample;
 
   const tabs: TTab[] = [
     { id: '1', label: 'Headers' },
@@ -45,9 +43,11 @@ const IDE = () => {
 
   const onSubmit = async () => {
     setStatusValid(true);
+    const checkHeadersMessage = headersMessage ? headersMessage : apiHeadersExample;
+    const checkVariablesMessage = variablesMessage ? variablesMessage : apiVariablesExample;
     setQueryMessage(
       await getData(
-        JSON.parse(headersMessage),
+        JSON.parse(checkHeadersMessage),
         ref?.current?.value,
         JSON.parse(checkVariablesMessage)
       )
@@ -83,7 +83,7 @@ const IDE = () => {
                   register={register('headers', {
                     required: true,
                     validate: {
-                      validate: (headers) => validateQueryHeaders(headers),
+                      validate: (headers) => validateQueryHeadersInput(headers),
                     },
                   })}
                   headersText={headersMessage}
@@ -95,7 +95,7 @@ const IDE = () => {
                   error={errors.variables}
                   register={register('variables', {
                     validate: {
-                      validate: (variables) => validateQueryVariables(variables),
+                      validate: (variables) => validateQueryVariablesInput(variables),
                     },
                   })}
                   variablesText={variablesMessage}

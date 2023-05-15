@@ -1,5 +1,3 @@
-import { apiHeadersExample } from './constants';
-
 export function ensureError(value: unknown): Error {
   if (value instanceof Error) return value;
 
@@ -11,18 +9,23 @@ export function ensureError(value: unknown): Error {
   return error;
 }
 
-export const validateQueryHeaders = (text: string) => {
-  if (text === apiHeadersExample) return true;
-  return false;
-};
-
-export const validateQueryVariables = (text: string) => {
+export const validateQueryHeadersInput = (text: string) => {
   let count = 0;
   const strArr = text.split('');
   for (let i = 0; i < strArr.length; i++) {
     if (strArr[i] === '"') count += 1;
   }
-  if ((strArr.includes('{') && strArr.includes('}') && count === 4) || text.length === 0)
+  if (strArr.includes('{') && strArr.includes('}') && count % 4 === 0) return true;
+  return false;
+};
+
+export const validateQueryVariablesInput = (text: string) => {
+  let count = 0;
+  const strArr = text.split('');
+  for (let i = 0; i < strArr.length; i++) {
+    if (strArr[i] === '"') count += 1;
+  }
+  if ((strArr.includes('{') && strArr.includes('}') && count % 4 === 0) || text.length === 0)
     return true;
   return false;
 };
