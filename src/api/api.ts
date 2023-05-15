@@ -1,19 +1,23 @@
-import { apiErrorMessage } from '../utils/constants';
+import { TVariablesInput } from 'types';
+import { queryErrorMessage, baseApiGraphQLAddress } from '../utils/constants';
 
-export async function getData(data: string | undefined | Error) {
+export async function getData(
+  headersInput: Headers | undefined,
+  queryInput: string | undefined | Error,
+  variablesInput: undefined | TVariablesInput
+) {
   try {
-    const response = await fetch(`https://rickandmortyapi.com/graphql`, {
+    const response = await fetch(baseApiGraphQLAddress, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: headersInput,
       body: JSON.stringify({
-        query: data,
+        query: queryInput,
+        variables: variablesInput,
       }),
     });
     const res = await response.json();
     return JSON.stringify(res);
   } catch (e) {
-    alert(apiErrorMessage);
+    alert(queryErrorMessage);
   }
 }
