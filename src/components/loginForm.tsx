@@ -1,4 +1,4 @@
-import { ErrorMessage } from '@hookform/error-message';
+import { ErrorMessage } from '@hookform/error-message/dist';
 import { useForm } from 'react-hook-form';
 import { logInWithEmailAndPassword } from '../features/firebase';
 import { Link } from 'react-router-dom';
