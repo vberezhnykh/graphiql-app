@@ -6,7 +6,8 @@ import { TTab } from 'types';
 import { useForm } from 'react-hook-form';
 import { FormInputState } from '../utils/interfaces';
 import { InputQueryHeaders } from './inputQueryHeaders';
-import { validateQueryHeaders } from '../utils/functions';
+import { validateQueryHeaders, validateQueryVariables } from '../utils/functions';
+import { InputQueryVariables } from './inputQueryVariables';
 
 const IDE = () => {
   const [queryMessage, setQueryMessage] = useState<string | undefined>('');
@@ -20,7 +21,7 @@ const IDE = () => {
   const changeVariablesMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setVariablesMessage(event.target.value);
   };
-  // const checkVariablesMessage = variablesMessage ? variablesMessage : apiVariablesExample;
+  const checkVariablesMessage = variablesMessage ? variablesMessage : apiVariablesExample;
 
   const tabs: TTab[] = [
     { id: '1', label: 'Headers' },
@@ -45,7 +46,11 @@ const IDE = () => {
   const onSubmit = async () => {
     setStatusValid(true);
     setQueryMessage(
-      await getData(JSON.parse(headersMessage), ref?.current?.value, JSON.parse(variablesMessage))
+      await getData(
+        JSON.parse(headersMessage),
+        ref?.current?.value,
+        JSON.parse(checkVariablesMessage)
+      )
     );
     reset();
     setTimeout(() => {
@@ -73,12 +78,6 @@ const IDE = () => {
             <Tabs selectedId={selectedTabId} tabs={tabs} onClick={handleTabClick} />
             <div className="tabs-container">
               {selectedTabId === tabs[0].id && (
-                // <textarea
-                //   className="tab-textarea"
-                //   placeholder={apiHeadersExample}
-                //   value={headersMessage}
-                //   onChange={changeHeadersMessage}
-                // ></textarea>
                 <InputQueryHeaders
                   error={errors.headers}
                   register={register('headers', {
@@ -92,12 +91,16 @@ const IDE = () => {
                 />
               )}
               {selectedTabId === tabs[1].id && (
-                <textarea
-                  className="tab-textarea"
-                  placeholder={apiVariablesExample}
-                  value={variablesMessage}
-                  onChange={changeVariablesMessage}
-                ></textarea>
+                <InputQueryVariables
+                  error={errors.variables}
+                  register={register('variables', {
+                    validate: {
+                      validate: (variables) => validateQueryVariables(variables),
+                    },
+                  })}
+                  variablesText={variablesMessage}
+                  changeVariablesText={changeVariablesMessage}
+                />
               )}
             </div>
           </div>

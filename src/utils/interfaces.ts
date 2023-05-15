@@ -19,3 +19,10 @@ export interface InputQueryHeadersInterface {
   headersText: string | undefined;
   changeHeadersText: ChangeEventHandler<HTMLTextAreaElement> | undefined;
 }
+
+export interface InputQueryVariablesInterface {
+  register: UseFormRegisterReturn<'variables'>;
+  error: FieldError | undefined;
+  variablesText: string | undefined;
+  changeVariablesText: ChangeEventHandler<HTMLTextAreaElement> | undefined;
+}
