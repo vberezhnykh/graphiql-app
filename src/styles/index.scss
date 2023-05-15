@@ -3,6 +3,7 @@
 @import './base/typography';
 @import './base/base';
 @import './layout/header';
+@import './layout/footer';
 @import './layout/main';
 @import './layout/forms';
 @import './layout/ide';
@@ -12,3 +13,5 @@
 @import './components/resetForm';
 @import './pages/login';
 @import './pages/register';
+@import './pages/home';
+@import './vendors/toastify';

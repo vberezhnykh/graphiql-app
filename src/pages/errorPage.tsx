@@ -1,3 +1,4 @@
+import Footer from '../components/footer';
 import Header from '../components/header';
 
 const ErrorPage = () => {
@@ -7,7 +8,7 @@ const ErrorPage = () => {
       <main className="main main--flex">
         <h1>Oops...page not found.</h1>
       </main>
-      <footer>Footer Template</footer>
+      <Footer />
     </>
   );
 };

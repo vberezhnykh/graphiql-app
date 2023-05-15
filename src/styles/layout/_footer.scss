@@ -1,0 +1,17 @@
+.footer {
+  height: 6rem;
+  font-size: 1.6rem;
+  border-top: 0.2rem solid $blue;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  justify-content: space-between;
+
+  img {
+    height: 4rem;
+  }
+
+  a {
+    color: $blue;
+  }
+}

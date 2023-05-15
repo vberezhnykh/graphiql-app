@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Spin } from 'antd';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import Footer from '../components/footer';
 
 const MainPage = () => {
   const [user, isLoading] = useAuthState(auth);
@@ -28,7 +29,7 @@ const MainPage = () => {
       <main className="main--flex main">
         <IDE />
       </main>
-      <footer>Footer Template</footer>
+      <Footer />
     </>
   );
 };

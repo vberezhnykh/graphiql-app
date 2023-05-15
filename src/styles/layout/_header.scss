@@ -1,5 +1,5 @@
 .header {
-  height: 8rem;
+  height: 6rem;
   border-bottom: 0.2rem solid $blue;
   font-size: 2rem;
 }
@@ -7,7 +7,7 @@
 .header-container {
   max-width: 960px;
   margin: 0 auto;
-  height: 8rem;
+  height: 6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,6 +39,11 @@
   a {
     @include button();
     background-color: $blue;
+  }
+
+  .header__sign-up {
+    color: $blue;
+    background-color: white;
   }
 }
 

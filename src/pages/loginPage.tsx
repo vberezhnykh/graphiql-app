@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../features/firebase';
 import { Spin } from 'antd';
+import Footer from '../components/footer';
 
 const Login = () => {
   const [user, isLoading] = useAuthState(auth);
@@ -27,11 +28,11 @@ const Login = () => {
       <header className="login-header">
         Not a member? <Link to={'/register'}>Sign up now</Link>
       </header>
-      <ToastContainer />
+      <ToastContainer className={'toast-container'} />
       <main className="main--flex">
         <LoginForm />
       </main>
-      <footer>Footer Template</footer>
+      <Footer />
     </>
   );
 };

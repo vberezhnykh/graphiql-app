@@ -6,6 +6,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../features/firebase';
 import { useEffect } from 'react';
 import { Spin } from 'antd';
+import Footer from '../components/footer';
 
 const Register = () => {
   const [user, isLoading] = useAuthState(auth);
@@ -31,7 +32,7 @@ const Register = () => {
       <main className="main--flex">
         <RegisterForm />
       </main>
-      <footer>Footer Template</footer>
+      <Footer />
     </>
   );
 };
