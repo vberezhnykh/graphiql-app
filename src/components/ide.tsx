@@ -3,6 +3,10 @@ import { getData } from '../api/api';
 import React, { ChangeEvent, useRef, useState } from 'react';
 import { Tabs } from './tabs';
 import { TTab } from 'types';
+import { useForm } from 'react-hook-form';
+import { FormInputState } from '../utils/interfaces';
+import { InputQueryHeaders } from './inputQueryHeaders';
+import { validateQueryHeaders } from '../utils/functions';
 
 const IDE = () => {
   const [queryMessage, setQueryMessage] = useState<string | undefined>('');
@@ -11,12 +15,12 @@ const IDE = () => {
   const changeHeadersMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setHeadersMessage(event.target.value);
   };
-  const checkHeadersMessage = headersMessage ? headersMessage : apiHeadersExample;
+  // const checkHeadersMessage = headersMessage ? headersMessage : apiHeadersExample;
   const [variablesMessage, setVariablesMessage] = useState(apiVariablesExample);
   const changeVariablesMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setVariablesMessage(event.target.value);
   };
-  const checkVariablesMessage = variablesMessage ? variablesMessage : apiVariablesExample;
+  // const checkVariablesMessage = variablesMessage ? variablesMessage : apiVariablesExample;
 
   const tabs: TTab[] = [
     { id: '1', label: 'Headers' },
@@ -29,13 +33,33 @@ const IDE = () => {
     setSelectedTabId(id);
   };
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormInputState>({ reValidateMode: 'onSubmit' });
+
+  const [statusValid, setStatusValid] = React.useState(false);
+
+  const onSubmit = async () => {
+    setStatusValid(true);
+    setQueryMessage(
+      await getData(JSON.parse(headersMessage), ref?.current?.value, JSON.parse(variablesMessage))
+    );
+    reset();
+    setTimeout(() => {
+      setStatusValid(false);
+    }, 2000);
+  };
+
   return (
     <div className="editor">
       <div className="editor__container">
         <div className="editor__docs">
           <h4 className="editor__header docs-header">Docs</h4>
         </div>
-        <div className="editor__request">
+        <form className="editor__request" onSubmit={handleSubmit(onSubmit)}>
           <h4 className="editor__header request-header">Request</h4>
           <textarea
             className="editor__textarea-request"
@@ -49,12 +73,23 @@ const IDE = () => {
             <Tabs selectedId={selectedTabId} tabs={tabs} onClick={handleTabClick} />
             <div className="tabs-container">
               {selectedTabId === tabs[0].id && (
-                <textarea
-                  className="tab-textarea"
-                  placeholder={apiHeadersExample}
-                  value={headersMessage}
-                  onChange={changeHeadersMessage}
-                ></textarea>
+                // <textarea
+                //   className="tab-textarea"
+                //   placeholder={apiHeadersExample}
+                //   value={headersMessage}
+                //   onChange={changeHeadersMessage}
+                // ></textarea>
+                <InputQueryHeaders
+                  error={errors.headers}
+                  register={register('headers', {
+                    required: true,
+                    validate: {
+                      validate: (headers) => validateQueryHeaders(headers),
+                    },
+                  })}
+                  headersText={headersMessage}
+                  changeHeadersText={changeHeadersMessage}
+                />
               )}
               {selectedTabId === tabs[1].id && (
                 <textarea
@@ -68,19 +103,21 @@ const IDE = () => {
           </div>
           <button
             className="editor__request-button"
-            onClick={async () =>
-              setQueryMessage(
-                await getData(
-                  JSON.parse(checkHeadersMessage),
-                  ref?.current?.value,
-                  JSON.parse(checkVariablesMessage)
-                )
-              )
-            }
+            // onClick={async () =>
+            //   setQueryMessage(
+            //     await getData(
+            //       JSON.parse(checkHeadersMessage),
+            //       ref?.current?.value,
+            //       JSON.parse(checkVariablesMessage)
+            //     )
+            //   )
+            // }
+            type="submit"
           >
             Request
           </button>
-        </div>
+          {statusValid && <span>Request has been sent</span>}
+        </form>
         <div className="editor__response">
           <h4 className="editor__header response-header">Response</h4>
           <textarea

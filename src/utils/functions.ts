@@ -1,3 +1,5 @@
+import { apiHeadersExample } from './constants';
+
 export function ensureError(value: unknown): Error {
   if (value instanceof Error) return value;
 
@@ -8,3 +10,8 @@ export function ensureError(value: unknown): Error {
   const error = new Error(`This value was thrown as is, not through an Error: ${stringified}`);
   return error;
 }
+
+export const validateQueryHeaders = (text: string) => {
+  if (text === apiHeadersExample) return true;
+  return false;
+};
