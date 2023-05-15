@@ -8,6 +8,7 @@ import { FormInputState } from '../utils/interfaces';
 import { InputQueryHeaders } from './inputQueryHeaders';
 import { validateQueryHeadersInput, validateQueryVariablesInput } from '../utils/functions';
 import { InputQueryVariables } from './inputQueryVariables';
+import { Docs } from './docs';
 
 const IDE = () => {
   const [queryMessage, setQueryMessage] = useState<string | undefined>('');
@@ -40,22 +41,28 @@ const IDE = () => {
   } = useForm<FormInputState>({ reValidateMode: 'onSubmit' });
 
   const [statusValid, setStatusValid] = React.useState(false);
+  const [renderDocs, setRenderDocs] = React.useState(false);
 
   const onSubmit = async () => {
-    setStatusValid(true);
-    const checkHeadersMessage = headersMessage ? headersMessage : apiHeadersExample;
-    const checkVariablesMessage = variablesMessage ? variablesMessage : apiVariablesExample;
-    setQueryMessage(
-      await getData(
-        JSON.parse(checkHeadersMessage),
-        ref?.current?.value,
-        JSON.parse(checkVariablesMessage)
-      )
-    );
-    reset();
-    setTimeout(() => {
-      setStatusValid(false);
-    }, 2000);
+    try {
+      setStatusValid(true);
+      const checkHeadersMessage = headersMessage ? headersMessage : apiHeadersExample;
+      const checkVariablesMessage = variablesMessage ? variablesMessage : apiVariablesExample;
+      setQueryMessage(
+        await getData(
+          JSON.parse(checkHeadersMessage),
+          ref?.current?.value,
+          JSON.parse(checkVariablesMessage)
+        )
+      );
+      setRenderDocs(true);
+      reset();
+      setTimeout(() => {
+        setStatusValid(false);
+      }, 2000);
+    } catch (error) {
+      setRenderDocs(false);
+    }
   };
 
   return (
@@ -63,13 +70,12 @@ const IDE = () => {
       <div className="editor__container">
         <div className="editor__docs">
           <h4 className="editor__header docs-header">Docs</h4>
+          {renderDocs && <Docs />}
         </div>
         <form className="editor__request" onSubmit={handleSubmit(onSubmit)}>
           <h4 className="editor__header request-header">Request</h4>
           <textarea
             className="editor__textarea-request"
-            name=""
-            id=""
             ref={ref}
             placeholder={baseQueryRequest}
             defaultValue={baseQueryRequest}
@@ -104,19 +110,7 @@ const IDE = () => {
               )}
             </div>
           </div>
-          <button
-            className="editor__request-button"
-            // onClick={async () =>
-            //   setQueryMessage(
-            //     await getData(
-            //       JSON.parse(checkHeadersMessage),
-            //       ref?.current?.value,
-            //       JSON.parse(checkVariablesMessage)
-            //     )
-            //   )
-            // }
-            type="submit"
-          >
+          <button className="editor__request-button" type="submit">
             Request
           </button>
           {statusValid && <span>Request has been sent</span>}
@@ -125,14 +119,10 @@ const IDE = () => {
           <h4 className="editor__header response-header">Response</h4>
           <textarea
             className="editor__textarea-response"
-            name=""
-            id=""
             value={queryMessage}
             readOnly
             placeholder="Here you get response from API"
-          >
-            <pre></pre>
-          </textarea>
+          ></textarea>
         </div>
       </div>
     </div>

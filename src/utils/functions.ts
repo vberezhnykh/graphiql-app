@@ -19,6 +19,11 @@ export const validateQueryHeadersInput = (text: string) => {
   return false;
 };
 
+export const validateQueryInput = (text: string) => {
+  if (text.split('').includes('query')) return true;
+  return false;
+};
+
 export const validateQueryVariablesInput = (text: string) => {
   let count = 0;
   const strArr = text.split('');
