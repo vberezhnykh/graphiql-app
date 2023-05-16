@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.scss';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -11,6 +11,7 @@ import Register from './pages/registerPage';
 import Login from './pages/loginPage';
 import Reset from './pages/resetPage';
 import loader from './features/redirect';
+import './features/i18n/i18n';
 
 const router = createBrowserRouter([
   {
@@ -26,8 +27,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </Suspense>
   </React.StrictMode>
 );

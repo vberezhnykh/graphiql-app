@@ -2,7 +2,7 @@ import { apiHeadersExample, apiVariablesExample, baseQueryRequest } from '../uti
 import { getData } from '../api/api';
 import React, { ChangeEvent, useRef, useState } from 'react';
 import { Tabs } from './tabs';
-import { TTab } from 'types';
+import { TTab } from 'types/types';
 import { useForm } from 'react-hook-form';
 import { FormInputState } from '../utils/interfaces';
 import { InputQueryHeaders } from './inputQueryHeaders';

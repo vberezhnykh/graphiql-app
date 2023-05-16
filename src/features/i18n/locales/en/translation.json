@@ -1,0 +1,14 @@
+{
+  "home": {
+    "paragraphs": {
+      "1": "GraphiQL is a playground/IDE for graphQL requests.",
+      "2": {
+        "part1": "Made by Valentin Berezhnykh and Jan Chorny as a",
+        "part2": "final task",
+        "part3": "on the",
+        "part4": "React course",
+        "part5": "organized by RSSchool"
+      }
+    }
+  }
+}
