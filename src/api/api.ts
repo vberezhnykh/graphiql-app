@@ -1,5 +1,6 @@
 import { TVariablesInput } from 'types';
-import { queryErrorMessage, baseApiGraphQLAddress } from '../utils/constants';
+import { baseApiGraphQLAddress } from '../utils/constants';
+import { ensureError } from '../utils/functions';
 
 export async function getData(
   headersInput: Headers | undefined,
@@ -18,6 +19,7 @@ export async function getData(
     const res = await response.json();
     return JSON.stringify(res);
   } catch (e) {
-    alert(queryErrorMessage);
+    const error = ensureError(e);
+    alert(error.message);
   }
 }
