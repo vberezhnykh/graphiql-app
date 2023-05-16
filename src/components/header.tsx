@@ -4,6 +4,7 @@ import { useAppDispatch } from '../store/hooks';
 import { auth, logout } from '../features/firebase';
 import { saveUserName } from '../store/features/authSlice';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import LanguageSwitcher from './languageSwitcher';
 
 const Header = () => {
   const navLinks = [
@@ -34,28 +35,31 @@ const Header = () => {
             </NavLink>
           ))}
         </nav>
-        {user ? (
-          <button
-            className="logout-button"
-            onClick={() => {
-              logout();
-              dispath(saveUserName(''));
-            }}
-          >
-            Sign out
-          </button>
-        ) : (
-          <ul className="header__buttons">
-            <li>
-              <Link to={'/login'}>Sign In</Link>
-            </li>
-            <li>
-              <Link to={'/register'} className="header__sign-up">
-                Sign Up
-              </Link>
-            </li>
-          </ul>
-        )}
+        <ul className="header__buttons">
+          {user ? (
+            <button
+              className="logout-button"
+              onClick={() => {
+                logout();
+                dispath(saveUserName(''));
+              }}
+            >
+              Sign out
+            </button>
+          ) : (
+            <>
+              <li>
+                <Link to={'/login'}>Sign In</Link>
+              </li>
+              <li>
+                <Link to={'/register'} className="header__sign-up">
+                  Sign Up
+                </Link>
+              </li>
+            </>
+          )}
+          <LanguageSwitcher />
+        </ul>
       </div>
     </header>
   );

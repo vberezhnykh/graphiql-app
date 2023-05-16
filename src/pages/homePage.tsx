@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 const HomePage = () => {
   const [user, isLoading] = useAuthState(auth);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!user) return;
@@ -21,29 +21,10 @@ const HomePage = () => {
       </main>
     );
 
-  const changeLanguage = (language: string) => {
-    i18n.changeLanguage(language);
-  };
-
   return (
     <>
       <Header />
-      <div>
-        <button
-          onClick={() => {
-            changeLanguage('ru');
-          }}
-        >
-          Ru
-        </button>
-        <button
-          onClick={() => {
-            changeLanguage('en');
-          }}
-        >
-          En
-        </button>
-      </div>
+      <div></div>
       <main className="main main--flex main__home">
         <p>{t('home.paragraphs.1')}</p>
         <p>
