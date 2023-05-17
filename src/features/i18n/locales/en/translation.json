@@ -21,5 +21,12 @@
       "signin": "Sign In",
       "signup": "Sign Up"
     }
+  },
+  "footer": {
+    "text": {
+      "part1": "Made by",
+      "part2": "and",
+      "part3": "in 2023"
+    }
   }
 }
