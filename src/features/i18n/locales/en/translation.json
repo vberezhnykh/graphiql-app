@@ -28,5 +28,18 @@
       "part2": "and",
       "part3": "in 2023"
     }
+  },
+  "login": {
+    "header": {
+      "part1": "Not a member?",
+      "part2": "Sign up now"
+    },
+    "heading": "Sign in",
+    "form": {
+      "email": "Email",
+      "reset": "Forgot password?",
+      "password": "Password",
+      "submit": "Sign in"
+    }
   }
 }
