@@ -5,16 +5,18 @@ import { auth, logout } from '../features/firebase';
 import { saveUserName } from '../store/features/authSlice';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import LanguageSwitcher from './languageSwitcher';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
+  const { t } = useTranslation();
   const navLinks = [
     {
       to: '/',
-      text: 'Home',
+      text: t('header.links.home'),
     },
     {
       to: '/main',
-      text: 'Main',
+      text: t('header.links.main'),
     },
   ];
 
@@ -44,16 +46,16 @@ const Header = () => {
                 dispath(saveUserName(''));
               }}
             >
-              Sign out
+              {t('header.buttons.signout')}
             </button>
           ) : (
             <>
               <li>
-                <Link to={'/login'}>Sign In</Link>
+                <Link to={'/login'}>{t('header.buttons.signin')}</Link>
               </li>
               <li>
                 <Link to={'/register'} className="header__sign-up">
-                  Sign Up
+                  {t('header.buttons.signup')}
                 </Link>
               </li>
             </>

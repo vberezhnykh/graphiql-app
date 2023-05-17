@@ -7,8 +7,19 @@
         "part2": "final task",
         "part3": "on the",
         "part4": "React course",
-        "part5": "organized by RSSchool"
+        "part5": "organized by RSSchool."
       }
+    }
+  },
+  "header": {
+    "links": {
+      "home": "Home",
+      "main": "Main"
+    },
+    "buttons": {
+      "signout": "Sign out",
+      "signin": "Sign In",
+      "signup": "Sign Up"
     }
   }
 }

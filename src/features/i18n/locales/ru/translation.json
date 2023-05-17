@@ -10,5 +10,16 @@
         "part5": "организованном RSSchool."
       }
     }
+  },
+  "header": {
+    "links": {
+      "home": "Домой",
+      "main": "Главная"
+    },
+    "buttons": {
+      "signout": "Выйти",
+      "signin": "Войти",
+      "signup": "Регистрация"
+    }
   }
 }
