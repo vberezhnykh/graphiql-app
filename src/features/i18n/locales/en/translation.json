@@ -40,6 +40,13 @@
       "reset": "Forgot password?",
       "password": "Password",
       "submit": "Sign in"
+    },
+    "errors": {
+      "email": {
+        "empty": "Email cannot be empty",
+        "invalid": "Entered value does not match email format"
+      },
+      "password": "Password cannot be empty"
     }
   }
 }

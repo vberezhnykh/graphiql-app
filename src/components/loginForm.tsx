@@ -29,6 +29,7 @@ const LoginForm = () => {
       <h1>{t('login.heading')}</h1>
       <ul className="errors-list">
         <ErrorMessage errors={errors} name="login" as="li" />
+        <ErrorMessage errors={errors} name="password" as="li" />
       </ul>
       <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
         <fieldset className="form-field login">
@@ -38,10 +39,10 @@ const LoginForm = () => {
             id="login"
             className="text-input"
             {...register('login', {
-              required: 'Email cannot be empty',
+              required: `${t('login.errors.email.empty')}`,
               pattern: {
                 value: emailRegex,
-                message: 'Entered value does not match email format',
+                message: `${t('login.errors.email.invalid')}`,
               },
             })}
           />
@@ -53,7 +54,14 @@ const LoginForm = () => {
               {t('login.form.reset')}
             </Link>
           </div>
-          <input type="password" id="password" className="text-input" {...register('password')} />
+          <input
+            type="password"
+            id="password"
+            className="text-input"
+            {...register('password', {
+              required: `${t('login.errors.password')}`,
+            })}
+          />
         </fieldset>
         <input type="submit" value={t('login.form.submit')} className="form__submit" />
       </form>
