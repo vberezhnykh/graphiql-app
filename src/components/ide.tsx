@@ -1,6 +1,6 @@
 import { apiHeadersExample, apiVariablesExample, baseQueryRequest } from '../utils/constants';
 import { getData } from '../api/api';
-import React, { ChangeEvent, useRef, useState } from 'react';
+import React, { ChangeEvent, Suspense, useRef, useState, lazy } from 'react';
 import { Tabs } from './tabs';
 import { TTab } from 'types';
 import { useForm } from 'react-hook-form';
@@ -8,7 +8,9 @@ import { FormInputState } from '../utils/interfaces';
 import { InputQueryHeaders } from './inputQueryHeaders';
 import { validateQueryHeadersInput, validateQueryVariablesInput } from '../utils/functions';
 import { InputQueryVariables } from './inputQueryVariables';
-import { Docs } from './docs';
+
+import type { TypedComponentType } from './docs';
+const Docs = lazy(() => import('./docs')) as TypedComponentType;
 
 const IDE = () => {
   const [queryMessage, setQueryMessage] = useState<string | undefined>('');
@@ -42,12 +44,15 @@ const IDE = () => {
 
   const [statusValid, setStatusValid] = React.useState(false);
   const [renderDocs, setRenderDocs] = React.useState(false);
+  // const checkQueryMessage = !queryMessage?.includes('errors')
+  //   ? setRenderDocs(true)
+  //   : setRenderDocs(false);
 
   const onSubmit = async () => {
     try {
       setStatusValid(true);
       const checkHeadersMessage = headersMessage ? headersMessage : apiHeadersExample;
-      const checkVariablesMessage = variablesMessage ? variablesMessage : apiVariablesExample;
+      const checkVariablesMessage = variablesMessage ? variablesMessage : '{}';
       setQueryMessage(
         await getData(
           JSON.parse(checkHeadersMessage),
@@ -55,7 +60,6 @@ const IDE = () => {
           JSON.parse(checkVariablesMessage)
         )
       );
-      setRenderDocs(true);
       reset();
       setTimeout(() => {
         setStatusValid(false);
@@ -70,7 +74,9 @@ const IDE = () => {
       <div className="editor__container">
         <div className="editor__docs">
           <h4 className="editor__header docs-header">Docs</h4>
-          {renderDocs && <Docs />}
+          <Suspense fallback={'Loading...'}>
+            <Docs rend={renderDocs} />
+          </Suspense>
         </div>
         <form className="editor__request" onSubmit={handleSubmit(onSubmit)}>
           <h4 className="editor__header request-header">Request</h4>

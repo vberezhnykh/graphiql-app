@@ -32,3 +32,7 @@ export interface InputQueryInterface {
   error: FieldError | undefined;
   queryText: RefObject<HTMLTextAreaElement> | undefined;
 }
+
+export interface DocsRenderInterface {
+  rend: boolean;
+}

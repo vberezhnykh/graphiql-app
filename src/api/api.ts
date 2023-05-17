@@ -16,8 +16,43 @@ export async function getData(
         variables: variablesInput,
       }),
     });
-    const res = await response.json();
-    return JSON.stringify(res);
+    if (response.status === 200) {
+      const result = await response.json();
+      return JSON.stringify(result);
+    }
+    alert('Check query input');
+    const result = await response.json();
+    return JSON.stringify(result);
+  } catch (e) {
+    const error = ensureError(e);
+    alert(error.message);
+  }
+}
+
+export async function getSchema() {
+  try {
+    const response = await fetch(baseApiGraphQLAddress, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: `{
+  __schema {
+    queryType {
+      fields {
+        name
+      }
+    }
+  }
+}`,
+      }),
+    });
+    if (response.status === 200) {
+      const result = await response.json();
+      return JSON.stringify(result);
+    }
+    alert('Not valid schema');
   } catch (e) {
     const error = ensureError(e);
     alert(error.message);
