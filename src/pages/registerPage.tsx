@@ -7,10 +7,12 @@ import { auth } from '../features/firebase';
 import { useEffect } from 'react';
 import { Spin } from 'antd';
 import Footer from '../components/footer';
+import { useTranslation } from 'react-i18next';
 
 const Register = () => {
   const [user, isLoading] = useAuthState(auth);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (user) navigate('/main');
@@ -26,7 +28,7 @@ const Register = () => {
   return (
     <>
       <header className="register-header">
-        Already have an account? <Link to={'/login'}>Sign In</Link>
+        {t('register.header.part1')} <Link to={'/login'}>{t('register.header.part2')}</Link>
       </header>
       <ToastContainer />
       <main className="main--flex">

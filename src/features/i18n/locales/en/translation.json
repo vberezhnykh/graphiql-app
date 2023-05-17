@@ -48,5 +48,34 @@
       },
       "password": "Password cannot be empty"
     }
+  },
+  "register": {
+    "header": {
+      "part1": "Already have an account?",
+      "part2": "Sign In"
+    },
+    "heading": "Sign up",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create Account"
+    },
+    "errors": {
+      "name": {
+        "empty": "Name cannot be empty",
+        "invalid": "Name is invalid",
+        "minlength": "Name must consist of at least 2 letters"
+      },
+      "email": {
+        "empty": "Email cannot be empty",
+        "invalid": "Entered value does not match email format"
+      },
+      "password": {
+        "empty": "Password cannot be empty",
+        "invalid": "Password must contain at least one letter, one number, one special character",
+        "minlength": "Password must have at least 8 characters"
+      }
+    }
   }
 }
