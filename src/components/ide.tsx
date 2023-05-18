@@ -44,9 +44,6 @@ const IDE = () => {
 
   const [statusValid, setStatusValid] = React.useState(false);
   const [renderDocs, setRenderDocs] = React.useState(false);
-  // const checkQueryMessage = !queryMessage?.includes('errors')
-  //   ? setRenderDocs(true)
-  //   : setRenderDocs(false);
 
   const onSubmit = async () => {
     try {
