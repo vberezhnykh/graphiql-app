@@ -6,9 +6,10 @@ const LanguageSwitcher = () => {
   const handleChange = (value: string) => {
     i18n.changeLanguage(value);
   };
+
   return (
     <Select
-      defaultValue={'en'}
+      defaultValue={i18n.language}
       onChange={handleChange}
       options={[{ value: 'en' }, { value: 'ru' }]}
     />
