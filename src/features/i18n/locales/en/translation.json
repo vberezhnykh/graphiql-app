@@ -115,5 +115,8 @@
       "invalid": "Entered value does not match email format"
     },
     "submit": "Reset Password"
+  },
+  "error": {
+    "heading": "Oops...page not found."
   }
 }
