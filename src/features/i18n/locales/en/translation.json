@@ -100,7 +100,20 @@
       "wrong-password": "Wrong password",
       "user-not-found": "User not found",
       "email-in-use": "Email already in use"
+    }
+  },
+  "reset": {
+    "successMsg": "Reset link send. You will be redirected to login page soon...",
+    "header": {
+      "part1": "Remember your password?",
+      "part2": "Sign in"
     },
-    "reset": "Reset link send. You will be redirected to login page soon..."
+    "heading": "Forgot your password?",
+    "email": "Email",
+    "errors": {
+      "required": "Email cannot be empty",
+      "invalid": "Entered value does not match email format"
+    },
+    "submit": "Reset Password"
   }
 }
