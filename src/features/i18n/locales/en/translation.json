@@ -94,5 +94,12 @@
       "required": "Required field! Use template like",
       "variables": "Use variables with template like"
     }
+  },
+  "firebase": {
+    "errors": {
+      "wrong-password": "Wrong password",
+      "user-not-found": "User not found",
+      "email-in-use": "Email already in use"
+    }
   }
 }

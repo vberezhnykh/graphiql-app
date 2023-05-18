@@ -8,6 +8,7 @@ import {
 } from 'firebase/auth';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
+import i18n from './i18n/i18n';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAWTOjh8H0QNWom3TwtXEh2nmVba0vAszY',
@@ -28,8 +29,8 @@ export const logInWithEmailAndPassword = async (email: string, password: string)
   } catch (error: unknown) {
     console.error(error);
     if (!(error instanceof FirebaseError)) return;
-    if (error.code === 'auth/wrong-password') toast.error('Invalid password');
-    if (error.code === 'auth/user-not-found') toast.error('User not found');
+    if (error.code === 'auth/wrong-password') toast.error(i18n.t('firebase.errors.wrong-password'));
+    if (error.code === 'auth/user-not-found') toast.error(i18n.t('firebase.errors.user-not-found'));
   }
 };
 
@@ -50,7 +51,7 @@ export const registerWithEmailAndPassword = async (
   } catch (error) {
     if (!(error instanceof FirebaseError)) return;
     if (error.code === 'auth/email-already-in-use') {
-      toast.error('Email already in use');
+      toast.error(i18n.t('firebase.errors.email-in-use'));
     }
   }
 };
