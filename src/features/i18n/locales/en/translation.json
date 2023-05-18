@@ -100,6 +100,7 @@
       "wrong-password": "Wrong password",
       "user-not-found": "User not found",
       "email-in-use": "Email already in use"
-    }
+    },
+    "reset": "Reset link send. You will be redirected to login page soon..."
   }
 }

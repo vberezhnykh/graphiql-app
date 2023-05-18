@@ -58,10 +58,12 @@ export const registerWithEmailAndPassword = async (
 
 export const sendPasswordResetOnEmail = async (email: string) => {
   try {
-    sendPasswordResetEmail(auth, email);
-    alert('reset link send');
+    await sendPasswordResetEmail(auth, email);
+    return true;
   } catch (error) {
     console.error(error);
+    toast.error(i18n.t('firebase.errors.user-not-found'));
+    return false;
   }
 };
 

@@ -7,6 +7,8 @@ import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { Spin } from 'antd';
 import Footer from '../components/footer';
+import { ToastContainer, toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 type FormData = {
   email: string;
@@ -21,10 +23,17 @@ const Reset = () => {
     formState: { errors },
   } = useForm<FormData>({ reValidateMode: 'onSubmit' });
 
-  const onSubmit = (data: FormData) => {
+  const { t } = useTranslation();
+
+  const onSubmit = async (data: FormData) => {
     const { email } = data;
-    sendPasswordResetOnEmail(email);
-    navigate('/login');
+    const res = await sendPasswordResetOnEmail(email);
+    if (res) {
+      toast.success(t('firebase.reset'));
+      setTimeout(() => {
+        navigate('/login');
+      }, 3000);
+    }
   };
 
   useEffect(() => {
@@ -46,6 +55,7 @@ const Reset = () => {
       <header className="register-header">
         Remember your password? <Link to={'/login'}>Sign in</Link>
       </header>
+      <ToastContainer className={'toast-container'} />
       <main className="main--flex">
         <div className="form-container">
           <h1>Forgot password?</h1>
