@@ -1,5 +1,7 @@
 import { Select } from 'antd';
 import { useTranslation } from 'react-i18next';
+import enImgSrc from '../assets/en-flag.png';
+import ruImgSrc from '../assets/ru-flag.png';
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
@@ -11,7 +13,12 @@ const LanguageSwitcher = () => {
     <Select
       defaultValue={i18n.language}
       onChange={handleChange}
-      options={[{ value: 'en' }, { value: 'ru' }]}
+      optionLabelProp="children"
+      options={[
+        { value: 'en', label: <img src={enImgSrc} height={'30px'} /> },
+        { value: 'ru', label: <img src={ruImgSrc} height={'30px'} /> },
+      ]}
+      className="language-switcher"
     />
   );
 };
