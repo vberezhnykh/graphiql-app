@@ -1,5 +1,5 @@
 import { TVariablesInput } from 'types';
-import { baseApiGraphQLAddress } from '../utils/constants';
+import { baseApiGraphQLAddress, baseSchemaRequest } from '../utils/constants';
 import { ensureError } from '../utils/functions';
 
 export async function getData(
@@ -37,15 +37,7 @@ export async function getSchema() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        query: `{
-  __schema {
-    queryType {
-      fields {
-        name
-      }
-    }
-  }
-}`,
+        query: baseSchemaRequest,
       }),
     });
     if (response.status === 200) {

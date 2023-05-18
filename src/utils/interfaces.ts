@@ -35,4 +35,5 @@ export interface InputQueryInterface {
 
 export interface DocsRenderInterface {
   rend: boolean;
+  text: string | undefined;
 }

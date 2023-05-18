@@ -1,5 +1,5 @@
 import { apiHeadersExample, apiVariablesExample, baseQueryRequest } from '../utils/constants';
-import { getData } from '../api/api';
+import { getData, getSchema } from '../api/api';
 import React, { ChangeEvent, Suspense, useRef, useState, lazy } from 'react';
 import { Tabs } from './tabs';
 import { TTab } from 'types';
@@ -14,6 +14,7 @@ const Docs = lazy(() => import('./docs')) as TypedComponentType;
 
 const IDE = () => {
   const [queryMessage, setQueryMessage] = useState<string | undefined>('');
+  const [schemaMessage, setSchemaMessage] = useState<string | undefined>('');
   const ref = useRef<HTMLTextAreaElement>(null);
   const [headersMessage, setHeadersMessage] = useState(apiHeadersExample);
   const changeHeadersMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -57,6 +58,8 @@ const IDE = () => {
           JSON.parse(checkVariablesMessage)
         )
       );
+      setSchemaMessage(await getSchema());
+      setRenderDocs(true);
       reset();
       setTimeout(() => {
         setStatusValid(false);
@@ -72,7 +75,7 @@ const IDE = () => {
         <div className="editor__docs">
           <h4 className="editor__header docs-header">Docs</h4>
           <Suspense fallback={'Loading...'}>
-            <Docs rend={renderDocs} />
+            <Docs rend={renderDocs} text={schemaMessage} />
           </Suspense>
         </div>
         <form className="editor__request" onSubmit={handleSubmit(onSubmit)}>
