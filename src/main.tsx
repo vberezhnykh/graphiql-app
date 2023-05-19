@@ -11,6 +11,7 @@ import Register from './pages/registerPage';
 import Login from './pages/loginPage';
 import Reset from './pages/resetPage';
 import loader from './features/redirect';
+import TestComponent from './components/docsInner/queryFields/testComponent';
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,17 @@ const router = createBrowserRouter([
   { path: '/login', element: <Login /> },
   { path: '/register', element: <Register /> },
   { path: '/reset', element: <Reset /> },
-  { path: '/main', element: <MainPage />, loader },
+  {
+    path: '/main',
+    element: <MainPage />,
+    loader,
+    children: [
+      {
+        path: 'test',
+        element: <TestComponent />,
+      },
+    ],
+  },
   { path: '*', element: <ErrorPage /> },
 ]);
 
