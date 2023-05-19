@@ -20,7 +20,7 @@ function Docs({ rend, text }: DocsRenderInterface) {
           <button className="btn" onClick={() => navigate(-1)}>
             Go Back
           </button>
-          <Outlet />
+          <Outlet context={mail} />
           <Query name={mail.data.__schema.queryType.name} />
           <QueryFields
             fields={mail.data.__schema.types[0].fields}
