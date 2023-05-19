@@ -29,7 +29,7 @@ const Reset = () => {
     const { email } = data;
     const res = await sendPasswordResetOnEmail(email);
     if (res) {
-      toast.success(t('firebase.reset.successMsg'));
+      toast.success(t('reset.successMsg'));
       setTimeout(() => {
         navigate('/login');
       }, 3000);
