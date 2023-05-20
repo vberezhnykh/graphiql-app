@@ -32,6 +32,12 @@ import CharacterImageComponent from './components/queryTypes/characterTypes/char
 import EpisodeType from './components/queryTypes/episodeTypes/episodeType';
 import CharacterEpisodeComponent from './components/queryTypes/characterTypes/characterEpisode';
 import CharacterCreatedComponent from './components/queryTypes/characterTypes/characterCreated';
+import LocationIdComponent from './components/queryTypes/locationTypes/locationId';
+import LocationNameComponent from './components/queryTypes/locationTypes/locationName';
+import LocationInnerTypeComponent from './components/queryTypes/locationTypes/locationInnerType';
+import LocationDimensionComponent from './components/queryTypes/locationTypes/locationDimension';
+import LocationResidentsComponent from './components/queryTypes/locationTypes/LocationResidents';
+import LocationCreatedComponent from './components/queryTypes/locationTypes/locationCreated';
 
 const router = createBrowserRouter([
   {
@@ -125,6 +131,30 @@ const router = createBrowserRouter([
       {
         path: 'locationType',
         element: <LocationType />,
+      },
+      {
+        path: 'locationId',
+        element: <LocationIdComponent />,
+      },
+      {
+        path: 'locationName',
+        element: <LocationNameComponent />,
+      },
+      {
+        path: 'locationInnerType',
+        element: <LocationInnerTypeComponent />,
+      },
+      {
+        path: 'locationDimension',
+        element: <LocationDimensionComponent />,
+      },
+      {
+        path: 'locationResidents',
+        element: <LocationResidentsComponent />,
+      },
+      {
+        path: 'locationCreated',
+        element: <LocationCreatedComponent />,
       },
       {
         path: 'episodeType',
