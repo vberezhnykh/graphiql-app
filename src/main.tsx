@@ -36,8 +36,14 @@ import LocationIdComponent from './components/queryTypes/locationTypes/locationI
 import LocationNameComponent from './components/queryTypes/locationTypes/locationName';
 import LocationInnerTypeComponent from './components/queryTypes/locationTypes/locationInnerType';
 import LocationDimensionComponent from './components/queryTypes/locationTypes/locationDimension';
-import LocationResidentsComponent from './components/queryTypes/locationTypes/LocationResidents';
+import LocationResidentsComponent from './components/queryTypes/locationTypes/locationResidents';
 import LocationCreatedComponent from './components/queryTypes/locationTypes/locationCreated';
+import EpisodeIdComponent from './components/queryTypes/episodeTypes/episodeId';
+import EpisodeNameComponent from './components/queryTypes/episodeTypes/episodeName';
+import EpisodeAirDateComponent from './components/queryTypes/episodeTypes/episodeAirDate';
+import EpisodeCodeComponent from './components/queryTypes/episodeTypes/episodeCode';
+import EpisodeCharactersComponent from './components/queryTypes/episodeTypes/episodeCharacters';
+import EpisodeCreatedComponent from './components/queryTypes/episodeTypes/episodeCreated';
 
 const router = createBrowserRouter([
   {
@@ -159,6 +165,30 @@ const router = createBrowserRouter([
       {
         path: 'episodeType',
         element: <EpisodeType />,
+      },
+      {
+        path: 'episodeId',
+        element: <EpisodeIdComponent />,
+      },
+      {
+        path: 'episodeName',
+        element: <EpisodeNameComponent />,
+      },
+      {
+        path: 'episodeAirDate',
+        element: <EpisodeAirDateComponent />,
+      },
+      {
+        path: 'episodeCode',
+        element: <EpisodeCodeComponent />,
+      },
+      {
+        path: 'episodeCharacters',
+        element: <EpisodeCharactersComponent />,
+      },
+      {
+        path: 'episodeCreated',
+        element: <EpisodeCreatedComponent />,
       },
     ],
   },
