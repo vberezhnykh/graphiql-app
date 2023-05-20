@@ -16,7 +16,7 @@ function Docs({ rend, text }: DocsRenderInterface) {
             Go Back
           </button>
           <p>
-            <NavLink to="/main/query">Root types</NavLink>
+            <NavLink to="/main/query">Start</NavLink>
           </p>
           <Outlet context={mail} />
         </div>

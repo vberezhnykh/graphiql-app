@@ -11,7 +11,9 @@ function characterField() {
       <p>Get a specific character by ID</p>
       <div>
         <p>Type</p>
-        <p>{character}</p>
+        <p>
+          <NavLink to="/main/characterType">{character}</NavLink>
+        </p>
       </div>
       <div>
         <p>Arguments</p>
