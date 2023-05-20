@@ -20,6 +20,18 @@ import IntComponent from './components/docsInner/bottomComponents/int';
 import CharacterField from './components/docsInner/queryFields/characterField/characterField';
 import CharacterType from './components/queryTypes/characterTypes/characterType';
 import CharacterIdComponent from './components/queryTypes/characterTypes/characterId';
+import CharacterNameComponent from './components/queryTypes/characterTypes/characterName';
+import CharacterStatusComponent from './components/queryTypes/characterTypes/characterStatus';
+import CharacterSpeciesComponent from './components/queryTypes/characterTypes/characterSpecies';
+import CharacterInnerTypeComponent from './components/queryTypes/characterTypes/characterInnerType';
+import CharacterGenderComponent from './components/queryTypes/characterTypes/characterGender';
+import LocationType from './components/queryTypes/locationTypes/locationType';
+import CharacterOriginComponent from './components/queryTypes/characterTypes/characterOrigin';
+import CharacterLocationComponent from './components/queryTypes/characterTypes/characterLocation';
+import CharacterImageComponent from './components/queryTypes/characterTypes/characterImage';
+import EpisodeType from './components/queryTypes/episodeTypes/episodeType';
+import CharacterEpisodeComponent from './components/queryTypes/characterTypes/characterEpisode';
+import CharacterCreatedComponent from './components/queryTypes/characterTypes/characterCreated';
 
 const router = createBrowserRouter([
   {
@@ -69,6 +81,54 @@ const router = createBrowserRouter([
       {
         path: 'characterId',
         element: <CharacterIdComponent />,
+      },
+      {
+        path: 'characterName',
+        element: <CharacterNameComponent />,
+      },
+      {
+        path: 'characterStatus',
+        element: <CharacterStatusComponent />,
+      },
+      {
+        path: 'characterSpecies',
+        element: <CharacterSpeciesComponent />,
+      },
+      {
+        path: 'characterInnerType',
+        element: <CharacterInnerTypeComponent />,
+      },
+      {
+        path: 'characterGender',
+        element: <CharacterGenderComponent />,
+      },
+      {
+        path: 'characterOrigin',
+        element: <CharacterOriginComponent />,
+      },
+      {
+        path: 'characterLocation',
+        element: <CharacterLocationComponent />,
+      },
+      {
+        path: 'characterImage',
+        element: <CharacterImageComponent />,
+      },
+      {
+        path: 'characterEpisode',
+        element: <CharacterEpisodeComponent />,
+      },
+      {
+        path: 'characterCreated',
+        element: <CharacterCreatedComponent />,
+      },
+      {
+        path: 'locationType',
+        element: <LocationType />,
+      },
+      {
+        path: 'episodeType',
+        element: <EpisodeType />,
       },
     ],
   },
