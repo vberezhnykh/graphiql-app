@@ -1,12 +1,13 @@
 import React from 'react';
-import { QueryType } from '../../utils/interfaces';
-import { NavLink } from 'react-router-dom';
+import { SchemaResponseInterface } from '../../utils/interfaces';
+import { NavLink, useOutletContext } from 'react-router-dom';
 
-function Query({ name }: QueryType) {
+function Query() {
+  const text: SchemaResponseInterface = useOutletContext();
   return (
     <>
       <div>
-        query: <NavLink to="/main/test">{name}</NavLink>
+        query: <NavLink to="/main/fields">{text.data.__schema.queryType.name}</NavLink>
       </div>
     </>
   );
