@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, useOutletContext } from 'react-router-dom';
 import { SchemaResponseInterface } from 'utils/interfaces';
 
-function characterField() {
+function CharacterField() {
   const text: SchemaResponseInterface = useOutletContext();
   const character = text.data.__schema.types[2].name;
   return (
@@ -25,4 +25,4 @@ function characterField() {
   );
 }
 
-export default characterField;
+export default CharacterField;

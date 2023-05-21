@@ -44,6 +44,20 @@ import EpisodeAirDateComponent from './components/queryTypes/episodeTypes/episod
 import EpisodeCodeComponent from './components/queryTypes/episodeTypes/episodeCode';
 import EpisodeCharactersComponent from './components/queryTypes/episodeTypes/episodeCharacters';
 import EpisodeCreatedComponent from './components/queryTypes/episodeTypes/episodeCreated';
+import CharactersField from './components/docsInner/queryFields/characterField/charactersField';
+import FilterCharacter from './components/docsInner/filter/filterCharacter';
+import NameComponent from './components/docsInner/bottomComponents/name';
+import StatusComponent from './components/docsInner/bottomComponents/status';
+import SpeciesComponent from './components/docsInner/bottomComponents/species';
+import TypeComponent from './components/docsInner/bottomComponents/type';
+import GenderComponent from './components/docsInner/bottomComponents/gender';
+import CharactersType from './components/queryTypes/characterTypes/charactersType';
+import InfoComponent from './components/docsInner/bottomComponents/info';
+import InfoTypeComponent from './components/docsInner/info/infoType';
+import CountComponent from './components/docsInner/bottomComponents/count';
+import PagesComponent from './components/docsInner/bottomComponents/pages';
+import NextComponent from './components/docsInner/bottomComponents/next';
+import PrevComponent from './components/docsInner/bottomComponents/prev';
 
 const router = createBrowserRouter([
   {
@@ -81,6 +95,46 @@ const router = createBrowserRouter([
       {
         path: 'int',
         element: <IntComponent />,
+      },
+      {
+        path: 'name',
+        element: <NameComponent />,
+      },
+      {
+        path: 'status',
+        element: <StatusComponent />,
+      },
+      {
+        path: 'species',
+        element: <SpeciesComponent />,
+      },
+      {
+        path: 'type',
+        element: <TypeComponent />,
+      },
+      {
+        path: 'gender',
+        element: <GenderComponent />,
+      },
+      {
+        path: 'info',
+        element: <InfoComponent />,
+      },
+      {
+        path: 'count',
+        element: <CountComponent />,
+      },
+      {
+        path: 'pages',
+        element: <PagesComponent />,
+      },
+      {
+        path: 'next',
+        element: <NextComponent />,
+      },
+      {
+        path: 'prev',
+        element: <PrevComponent />,
       },
       {
         path: 'characterField',
@@ -189,6 +243,22 @@ const router = createBrowserRouter([
       {
         path: 'episodeCreated',
         element: <EpisodeCreatedComponent />,
+      },
+      {
+        path: 'charactersField',
+        element: <CharactersField />,
+      },
+      {
+        path: 'filterCharacter',
+        element: <FilterCharacter />,
+      },
+      {
+        path: 'charactersType',
+        element: <CharactersType />,
+      },
+      {
+        path: 'infoType',
+        element: <InfoTypeComponent />,
       },
     ],
   },

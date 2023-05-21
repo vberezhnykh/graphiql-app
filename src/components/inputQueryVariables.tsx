@@ -11,6 +11,7 @@ export function InputQueryVariables({
   return (
     <>
       <textarea
+        id="variables"
         className="tab-textarea"
         {...register}
         placeholder={apiVariablesExample}

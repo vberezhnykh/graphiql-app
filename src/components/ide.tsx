@@ -81,6 +81,7 @@ const IDE = () => {
         <form className="editor__request" onSubmit={handleSubmit(onSubmit)}>
           <h4 className="editor__header request-header">Request</h4>
           <textarea
+            id="request"
             className="editor__textarea-request"
             ref={ref}
             placeholder={baseQueryRequest}
@@ -124,6 +125,7 @@ const IDE = () => {
         <div className="editor__response">
           <h4 className="editor__header response-header">Response</h4>
           <textarea
+            id="response"
             className="editor__textarea-response"
             value={queryMessage}
             readOnly
