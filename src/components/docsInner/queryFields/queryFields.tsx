@@ -60,6 +60,31 @@ function QueryFields() {
               <NavLink to="/main/locationType">[Location]</NavLink>
             </div>
           </div>
+          <div>
+            <p>Get a specific episode by ID</p>
+            <div>
+              <NavLink to="/main/episodeField">{fields[6].name}</NavLink>(id:{' '}
+              <NavLink to="/main/id">ID!): </NavLink>
+              <NavLink to="/main/episodeType">Episode</NavLink>
+            </div>
+          </div>
+          <div>
+            <p>Get the list of all episodes</p>
+            <div>
+              <NavLink to="/main/episodesField">{fields[7].name}</NavLink>(page:{' '}
+              <NavLink to="/main/int">Int </NavLink>filter:
+              <NavLink to="/main/filterEpisode">FilterEpisode): </NavLink>
+              <NavLink to="/main/episodesType">Episodes</NavLink>
+            </div>
+          </div>
+          <div>
+            <p>Get a list of episodes selected by ids</p>
+            <div>
+              <NavLink to="/main/episodesByIdsField">{fields[8].name}</NavLink>(ids:{' '}
+              <NavLink to="/main/id">[ID!]!): </NavLink>
+              <NavLink to="/main/episodeType">[Episode]</NavLink>
+            </div>
+          </div>
         </div>
       )}
     </>

@@ -66,6 +66,13 @@ import LocationsType from './components/queryTypes/locationTypes/locationsType';
 import DimensionComponent from './components/docsInner/bottomComponents/dimension';
 import FilterLocation from './components/docsInner/filter/filterLocation';
 import LocationsByIdsField from './components/docsInner/queryFields/locationField/locationsByIdsField';
+import EpisodeField from './components/docsInner/queryFields/episodeField/episodeField';
+import EpisodesField from './components/docsInner/queryFields/episodeField/episodesField';
+import EpisodesType from './components/queryTypes/episodeTypes/episodesType';
+import EpisodesResultsField from './components/docsInner/queryFields/episodeField/episodesResultsField';
+import EpisodeComponent from './components/docsInner/bottomComponents/episode';
+import FilterEpisode from './components/docsInner/filter/filterEpisode';
+import EpisodesByIdsField from './components/docsInner/queryFields/episodeField/episodesByIdsField';
 
 const router = createBrowserRouter([
   {
@@ -143,6 +150,10 @@ const router = createBrowserRouter([
       {
         path: 'dimension',
         element: <DimensionComponent />,
+      },
+      {
+        path: 'episode',
+        element: <EpisodeComponent />,
       },
       {
         path: 'characterField',
@@ -299,6 +310,30 @@ const router = createBrowserRouter([
       {
         path: 'locationsByIdsField',
         element: <LocationsByIdsField />,
+      },
+      {
+        path: 'episodeField',
+        element: <EpisodeField />,
+      },
+      {
+        path: 'episodesField',
+        element: <EpisodesField />,
+      },
+      {
+        path: 'episodesType',
+        element: <EpisodesType />,
+      },
+      {
+        path: 'episodesResultsField',
+        element: <EpisodesResultsField />,
+      },
+      {
+        path: 'filterEpisode',
+        element: <FilterEpisode />,
+      },
+      {
+        path: 'episodesByIdsField',
+        element: <EpisodesByIdsField />,
       },
     ],
   },
