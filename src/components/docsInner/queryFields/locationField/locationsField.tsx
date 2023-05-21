@@ -18,7 +18,7 @@ function LocationsField() {
           page: <NavLink to="/main/id">Int</NavLink>
         </p>
         <p>
-          filter: <NavLink to="/main/filterLocation">Int</NavLink>
+          filter: <NavLink to="/main/filterLocation">FilterLocation</NavLink>
         </p>
       </div>
     </>

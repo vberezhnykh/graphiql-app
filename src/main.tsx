@@ -63,6 +63,9 @@ import LocationsField from './components/docsInner/queryFields/locationField/loc
 import CharactersResultsField from './components/docsInner/queryFields/characterField/charactersResultsField';
 import LocationsResultsField from './components/docsInner/queryFields/locationField/locationsResultsField';
 import LocationsType from './components/queryTypes/locationTypes/locationsType';
+import DimensionComponent from './components/docsInner/bottomComponents/dimension';
+import FilterLocation from './components/docsInner/filter/filterLocation';
+import LocationsByIdsField from './components/docsInner/queryFields/locationField/locationsByIdsField';
 
 const router = createBrowserRouter([
   {
@@ -136,6 +139,10 @@ const router = createBrowserRouter([
       {
         path: 'prev',
         element: <PrevComponent />,
+      },
+      {
+        path: 'dimension',
+        element: <DimensionComponent />,
       },
       {
         path: 'characterField',
@@ -284,6 +291,14 @@ const router = createBrowserRouter([
       {
         path: 'locationsType',
         element: <LocationsType />,
+      },
+      {
+        path: 'filterLocation',
+        element: <FilterLocation />,
+      },
+      {
+        path: 'locationsByIdsField',
+        element: <LocationsByIdsField />,
       },
     ],
   },
