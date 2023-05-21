@@ -11,7 +11,6 @@ import Register from './pages/registerPage';
 import Login from './pages/loginPage';
 import Reset from './pages/resetPage';
 import loader from './features/redirect';
-import TestComponent from './components/docsInner/queryFields/testComponent';
 import QueryFields from './components/docsInner/queryFields/queryFields';
 import Query from './components/docsInner/query';
 import IdComponent from './components/docsInner/bottomComponents/id';
@@ -58,6 +57,12 @@ import CountComponent from './components/docsInner/bottomComponents/count';
 import PagesComponent from './components/docsInner/bottomComponents/pages';
 import NextComponent from './components/docsInner/bottomComponents/next';
 import PrevComponent from './components/docsInner/bottomComponents/prev';
+import CharactersByIdsField from './components/docsInner/queryFields/characterField/charactersByIdsField';
+import LocationField from './components/docsInner/queryFields/locationField/locationField';
+import LocationsField from './components/docsInner/queryFields/locationField/locationsField';
+import CharactersResultsField from './components/docsInner/queryFields/characterField/charactersResultsField';
+import LocationsResultsField from './components/docsInner/queryFields/locationField/locationsResultsField';
+import LocationsType from './components/queryTypes/locationTypes/locationsType';
 
 const router = createBrowserRouter([
   {
@@ -72,10 +77,6 @@ const router = createBrowserRouter([
     element: <MainPage />,
     loader,
     children: [
-      {
-        path: 'test',
-        element: <TestComponent />,
-      },
       {
         path: 'query',
         element: <Query />,
@@ -249,6 +250,10 @@ const router = createBrowserRouter([
         element: <CharactersField />,
       },
       {
+        path: 'charactersResultsField',
+        element: <CharactersResultsField />,
+      },
+      {
         path: 'filterCharacter',
         element: <FilterCharacter />,
       },
@@ -259,6 +264,26 @@ const router = createBrowserRouter([
       {
         path: 'infoType',
         element: <InfoTypeComponent />,
+      },
+      {
+        path: 'charactersByIdsField',
+        element: <CharactersByIdsField />,
+      },
+      {
+        path: 'locationField',
+        element: <LocationField />,
+      },
+      {
+        path: 'locationsField',
+        element: <LocationsField />,
+      },
+      {
+        path: 'locationsResultsField',
+        element: <LocationsResultsField />,
+      },
+      {
+        path: 'locationsType',
+        element: <LocationsType />,
       },
     ],
   },

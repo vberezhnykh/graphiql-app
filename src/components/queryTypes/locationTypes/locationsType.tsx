@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-function CharactersType() {
+function LocationsType() {
   return (
     <>
-      <h3>Characters</h3>
+      <h3>Locations</h3>
       <p>fields</p>
       <div>
         <div>
@@ -12,12 +12,12 @@ function CharactersType() {
           <NavLink to="/main/infoType">Info</NavLink>
         </div>
         <div>
-          <NavLink to="/main/charactersResultsField">results: </NavLink>
-          <NavLink to="/main/characterType">[Character]</NavLink>
+          <NavLink to="/main/locationsResultsField">results: </NavLink>
+          <NavLink to="/main/locationType">[Location]</NavLink>
         </div>
       </div>
     </>
   );
 }
 
-export default CharactersType;
+export default LocationsType;
