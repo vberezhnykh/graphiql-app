@@ -74,9 +74,11 @@ const IDE = () => {
       <div className="editor__container">
         <div className="editor__docs">
           <h4 className="editor__header docs-header">Docs</h4>
-          <Suspense fallback={'Loading...'}>
-            <Docs rend={renderDocs} text={schemaMessage} />
-          </Suspense>
+          <div className="editor__docs-container">
+            <Suspense fallback={'Loading...'}>
+              <Docs rend={renderDocs} text={schemaMessage} />
+            </Suspense>
+          </div>
         </div>
         <form className="editor__request" onSubmit={handleSubmit(onSubmit)}>
           <h4 className="editor__header request-header">Request</h4>

@@ -11,11 +11,11 @@ function Docs({ rend, text }: DocsRenderInterface) {
   return (
     <>
       {show && message && (
-        <div>
-          <button className="btn" onClick={() => navigate(-1)}>
+        <div className="docs-inner-container">
+          <button className="btn docs-inner-button" onClick={() => navigate(-1)}>
             Go Back
           </button>
-          <p>
+          <p className="docs-inner-start">
             <NavLink to="/main/query">Start</NavLink>
           </p>
           <Outlet context={mail} />
