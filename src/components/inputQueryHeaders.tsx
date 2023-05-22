@@ -13,6 +13,7 @@ export function InputQueryHeaders({
   return (
     <>
       <textarea
+        id="headers"
         className="tab-textarea"
         {...register}
         placeholder={apiHeadersExample}

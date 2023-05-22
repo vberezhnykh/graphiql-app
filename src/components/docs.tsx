@@ -1,20 +1,29 @@
 import React from 'react';
-import { apiHeadersExample, apiVariablesExample, baseQueryRequest } from '../utils/constants';
+import { DocsRenderInterface, SchemaResponseInterface } from '../utils/interfaces';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 
-export function Docs() {
+function Docs({ rend, text }: DocsRenderInterface) {
+  const message = text;
+  const show = rend;
+  const mail: SchemaResponseInterface = message ? JSON.parse(message) : '{}';
+  const navigate = useNavigate();
+
   return (
     <>
-      <div>To begin with start form query</div>
-      <div>
-        Fill in the Query field like <pre>{baseQueryRequest}</pre>
-      </div>
-      <div>
-        Than check Headers field with the correct input, like <pre>{apiHeadersExample}</pre>
-      </div>
-      <div>
-        And at last Check the variables field, if you use it, or live it empty
-        <pre>{apiVariablesExample}</pre>{' '}
-      </div>
+      {show && message && (
+        <div className="docs-inner-container">
+          <button className="btn docs-inner-button" onClick={() => navigate(-1)}>
+            Go Back
+          </button>
+          <p className="docs-inner-start">
+            <NavLink to="/main/query">Start</NavLink>
+          </p>
+          <Outlet context={mail} />
+        </div>
+      )}
     </>
   );
 }
+
+export default Docs;
+export type TypedComponentType = typeof Docs;
