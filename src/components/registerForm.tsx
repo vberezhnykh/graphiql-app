@@ -1,6 +1,7 @@
 import { ErrorMessage } from '@hookform/error-message';
 import { useForm } from 'react-hook-form';
 import { registerWithEmailAndPassword } from '../features/firebase';
+import { useTranslation } from 'react-i18next';
 
 type FormData = {
   name: string;
@@ -25,9 +26,11 @@ const RegisterForm = () => {
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
   const emailRegex = /\S+@\S+\.\S+/;
 
+  const { t } = useTranslation();
+
   return (
     <div className="form-container">
-      <h1>Sign up</h1>
+      <h1>{t('register.heading')}</h1>
       <ul className="errors-list">
         <ErrorMessage errors={errors} name="name" as="li" />
         <ErrorMessage errors={errors} name="email" as="li" />
@@ -35,7 +38,7 @@ const RegisterForm = () => {
       </ul>
       <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
         <fieldset className="form-field user__name">
-          <label htmlFor="user_name">Name</label>{' '}
+          <label htmlFor="user_name">{t('register.form.name')}</label>{' '}
           <input
             type="text"
             id="user_name"
@@ -43,33 +46,33 @@ const RegisterForm = () => {
             {...register('name', {
               pattern: {
                 value: nameRegex,
-                message: 'Name is invalid',
+                message: `${t('register.errors.name.invalid')}`,
               },
               minLength: {
-                value: 3,
-                message: 'Name must consist of at least 2 letters',
+                value: 2,
+                message: `${t('register.errors.name.minlength')}`,
               },
-              required: 'Name cannot be empty',
+              required: `${t('register.errors.name.empty')}`,
             })}
           />
         </fieldset>
         <fieldset className="form-field user__email">
-          <label htmlFor="user_email">Email</label>
+          <label htmlFor="user_email">{t('register.form.email')}</label>
           <input
             type="email"
             id="user_email"
             className={`text-input ${errors.email ? 'text-input--error' : undefined}`}
             {...register('email', {
-              required: 'Email cannot be empty',
+              required: `${t('register.errors.email.empty')}`,
               pattern: {
                 value: emailRegex,
-                message: 'Entered value does not match email format',
+                message: `${t('register.errors.email.invalid')}`,
               },
             })}
           />
         </fieldset>
         <fieldset className="form-field user__password">
-          <label htmlFor="user_password">Password</label>
+          <label htmlFor="user_password">{t('register.form.password')}</label>
           <input
             type="password"
             id="user_password"
@@ -77,18 +80,17 @@ const RegisterForm = () => {
             {...register('password', {
               pattern: {
                 value: passwordRegex,
-                message:
-                  'Password must contain at least one letter, one number, one special character',
+                message: `${t('register.errors.password.invalid')}`,
               },
               minLength: {
                 value: 8,
-                message: 'Password must have at least 8 characters',
+                message: `${t('register.errors.password.minlength')}`,
               },
-              required: 'Password cannot be empty',
+              required: `${t('register.errors.password.empty')}`,
             })}
           />
         </fieldset>
-        <input type="submit" value="Create Account" className="form__submit" />
+        <input type="submit" value={t('register.form.submit')} className="form__submit" />
       </form>
     </div>
   );

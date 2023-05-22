@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import type { FC } from 'react';
 import clsx from 'clsx';
-import { TTab } from 'types';
+import { TTab } from 'types/types';
 
 type TProps = {
   className?: string;

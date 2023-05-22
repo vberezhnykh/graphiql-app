@@ -1,6 +1,7 @@
 import React from 'react';
 import { apiVariablesExample } from '../utils/constants';
 import { InputQueryVariablesInterface } from 'utils/interfaces';
+import { useTranslation } from 'react-i18next';
 
 export function InputQueryVariables({
   register,
@@ -8,6 +9,7 @@ export function InputQueryVariables({
   variablesText,
   changeVariablesText,
 }: InputQueryVariablesInterface) {
+  const { t } = useTranslation();
   return (
     <>
       <textarea
@@ -17,7 +19,11 @@ export function InputQueryVariables({
         value={variablesText}
         onChange={changeVariablesText}
       ></textarea>
-      {error && <span> Use variables with template like {apiVariablesExample} or live empty</span>}
+      {error && (
+        <span>
+          {t('main.errors.variables')} {apiVariablesExample} or live empty
+        </span>
+      )}
     </>
   );
 }

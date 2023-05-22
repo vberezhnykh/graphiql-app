@@ -1,4 +1,4 @@
-import { TVariablesInput } from 'types';
+import { TVariablesInput } from 'types/types';
 import { queryErrorMessage, baseApiGraphQLAddress } from '../utils/constants';
 
 export async function getData(

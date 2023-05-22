@@ -24,6 +24,8 @@
     "@typescript-eslint/parser": "^5.54.1",
     "antd": "^5.4.7",
     "firebase": "^9.21.0",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next-http-backend": "^2.2.0",
     "lodash": "^4.17.21",
     "node-fetch": "^3.3.1",
     "react": "^18.2.0",
@@ -50,6 +52,7 @@
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@vitejs/plugin-react": "^3.1.0",
     "@vitest/coverage-c8": "^0.29.2",
+    "clsx": "^1.2.1",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-config-standard-with-typescript": "^34.0.0",
@@ -65,7 +68,10 @@
     "typescript": "^4.9.5",
     "vite": "^4.1.0",
     "vite-plugin-eslint": "^1.8.1",
-    "vitest": "^0.29.2",
-    "clsx": "^1.2.1"
+    "vitest": "^0.29.2"
+  },
+  "peerDependencies": {
+    "i18next": "^22.4.15",
+    "react-i18next": "^12.2.2"
   }
 }

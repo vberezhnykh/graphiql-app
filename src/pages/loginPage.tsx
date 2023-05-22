@@ -6,6 +6,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../features/firebase';
 import { Spin } from 'antd';
 import Footer from '../components/footer';
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
   const [user, isLoading] = useAuthState(auth);
@@ -15,6 +16,8 @@ const Login = () => {
     if (isLoading) return;
     if (user) navigate('/main');
   }, [user, isLoading]);
+
+  const { t } = useTranslation();
 
   if (isLoading)
     return (
@@ -26,7 +29,7 @@ const Login = () => {
   return (
     <>
       <header className="login-header">
-        Not a member? <Link to={'/register'}>Sign up now</Link>
+        {t('login.header.part1')} <Link to={'/register'}>{t('login.header.part2')}</Link>
       </header>
       <ToastContainer className={'toast-container'} />
       <main className="main--flex">

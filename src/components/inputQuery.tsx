@@ -1,8 +1,10 @@
 import React from 'react';
 import { baseQueryRequest } from '../utils/constants';
 import { InputQueryInterface } from 'utils/interfaces';
+import { useTranslation } from 'react-i18next';
 
 export function InputQuery({ register, error }: InputQueryInterface) {
+  const { t } = useTranslation();
   return (
     <>
       <textarea
@@ -11,7 +13,11 @@ export function InputQuery({ register, error }: InputQueryInterface) {
         placeholder={baseQueryRequest}
         defaultValue={baseQueryRequest}
       ></textarea>
-      {error && <span>Required field! Use template like {baseQueryRequest}</span>}
+      {error && (
+        <span>
+          {t('main.errors.required')} {baseQueryRequest}
+        </span>
+      )}
     </>
   );
 }

@@ -1,0 +1,122 @@
+{
+  "home": {
+    "paragraphs": {
+      "1": "GraphiQL is a playground/IDE for graphQL requests.",
+      "2": {
+        "part1": "Made by Valentin Berezhnykh and Jan Chorny as a",
+        "part2": "final task",
+        "part3": "on the",
+        "part4": "React course",
+        "part5": "organized by RSSchool."
+      }
+    }
+  },
+  "header": {
+    "links": {
+      "home": "Home",
+      "main": "Main"
+    },
+    "buttons": {
+      "signout": "Sign out",
+      "signin": "Sign In",
+      "signup": "Sign Up"
+    }
+  },
+  "footer": {
+    "text": {
+      "part1": "Made by",
+      "part2": "and",
+      "part3": "in 2023"
+    }
+  },
+  "login": {
+    "header": {
+      "part1": "Not a member?",
+      "part2": "Sign up now"
+    },
+    "heading": "Sign in",
+    "form": {
+      "email": "Email",
+      "reset": "Forgot password?",
+      "password": "Password",
+      "submit": "Sign in"
+    },
+    "errors": {
+      "email": {
+        "empty": "Email cannot be empty",
+        "invalid": "Entered value does not match email format"
+      },
+      "password": "Password cannot be empty"
+    }
+  },
+  "register": {
+    "header": {
+      "part1": "Already have an account?",
+      "part2": "Sign In"
+    },
+    "heading": "Sign up",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create Account"
+    },
+    "errors": {
+      "name": {
+        "empty": "Name cannot be empty",
+        "invalid": "Name is invalid",
+        "minlength": "Name must consist of at least 2 letters"
+      },
+      "email": {
+        "empty": "Email cannot be empty",
+        "invalid": "Entered value does not match email format"
+      },
+      "password": {
+        "empty": "Password cannot be empty",
+        "invalid": "Password must contain at least one letter, one number, one special character",
+        "minlength": "Password must have at least 8 characters"
+      }
+    }
+  },
+  "main": {
+    "docs": "Docs",
+    "request": {
+      "heading": "Request",
+      "validMsg": "Request has been sent"
+    },
+    "headers": "Headers",
+    "variables": "Variables",
+    "response": {
+      "heading": "Response",
+      "placeholder": "Here you get response from API"
+    },
+    "errors": {
+      "required": "Required field! Use template like",
+      "variables": "Use variables with template like"
+    }
+  },
+  "firebase": {
+    "errors": {
+      "wrong-password": "Wrong password",
+      "user-not-found": "User not found",
+      "email-in-use": "Email already in use"
+    }
+  },
+  "reset": {
+    "successMsg": "Reset link send. You will be redirected to login page soon...",
+    "header": {
+      "part1": "Remember your password?",
+      "part2": "Sign in"
+    },
+    "heading": "Forgot your password?",
+    "email": "Email",
+    "errors": {
+      "required": "Email cannot be empty",
+      "invalid": "Entered value does not match email format"
+    },
+    "submit": "Reset Password"
+  },
+  "error": {
+    "heading": "Oops...page not found."
+  }
+}

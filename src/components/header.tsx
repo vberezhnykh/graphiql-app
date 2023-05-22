@@ -4,16 +4,19 @@ import { useAppDispatch } from '../store/hooks';
 import { auth, logout } from '../features/firebase';
 import { saveUserName } from '../store/features/authSlice';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import LanguageSwitcher from './languageSwitcher';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
+  const { t } = useTranslation();
   const navLinks = [
     {
       to: '/',
-      text: 'Home',
+      text: t('header.links.home'),
     },
     {
       to: '/main',
-      text: 'Main',
+      text: t('header.links.main'),
     },
   ];
 
@@ -34,28 +37,31 @@ const Header = () => {
             </NavLink>
           ))}
         </nav>
-        {user ? (
-          <button
-            className="logout-button"
-            onClick={() => {
-              logout();
-              dispath(saveUserName(''));
-            }}
-          >
-            Sign out
-          </button>
-        ) : (
-          <ul className="header__buttons">
-            <li>
-              <Link to={'/login'}>Sign In</Link>
-            </li>
-            <li>
-              <Link to={'/register'} className="header__sign-up">
-                Sign Up
-              </Link>
-            </li>
-          </ul>
-        )}
+        <ul className="header__buttons">
+          {user ? (
+            <button
+              className="logout-button"
+              onClick={() => {
+                logout();
+                dispath(saveUserName(''));
+              }}
+            >
+              {t('header.buttons.signout')}
+            </button>
+          ) : (
+            <>
+              <li>
+                <Link to={'/login'}>{t('header.buttons.signin')}</Link>
+              </li>
+              <li>
+                <Link to={'/register'} className="header__sign-up">
+                  {t('header.buttons.signup')}
+                </Link>
+              </li>
+            </>
+          )}
+          <LanguageSwitcher />
+        </ul>
       </div>
     </header>
   );
