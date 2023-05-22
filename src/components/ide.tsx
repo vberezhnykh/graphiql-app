@@ -90,33 +90,38 @@ const IDE = () => {
             defaultValue={baseQueryRequest}
           ></textarea>
           <div className="editor__request-container">
-            <Tabs selectedId={selectedTabId} tabs={tabs} onClick={handleTabClick} />
-            <div className="tabs-container">
-              {selectedTabId === tabs[0].id && (
-                <InputQueryHeaders
-                  error={errors.headers}
-                  register={register('headers', {
-                    required: true,
-                    validate: {
-                      validate: (headers) => validateQueryHeadersInput(headers),
-                    },
-                  })}
-                  headersText={headersMessage}
-                  changeHeadersText={changeHeadersMessage}
-                />
-              )}
-              {selectedTabId === tabs[1].id && (
-                <InputQueryVariables
-                  error={errors.variables}
-                  register={register('variables', {
-                    validate: {
-                      validate: (variables) => validateQueryVariablesInput(variables),
-                    },
-                  })}
-                  variablesText={variablesMessage}
-                  changeVariablesText={changeVariablesMessage}
-                />
-              )}
+            <div className="editor__tabs-group">
+              <button className="editor__tabs-show-button">Show(Hide) additional fields</button>
+              <div className="editor__tabs-block">
+                <Tabs selectedId={selectedTabId} tabs={tabs} onClick={handleTabClick} />
+                <div className="tabs-container">
+                  {selectedTabId === tabs[0].id && (
+                    <InputQueryHeaders
+                      error={errors.headers}
+                      register={register('headers', {
+                        required: true,
+                        validate: {
+                          validate: (headers) => validateQueryHeadersInput(headers),
+                        },
+                      })}
+                      headersText={headersMessage}
+                      changeHeadersText={changeHeadersMessage}
+                    />
+                  )}
+                  {selectedTabId === tabs[1].id && (
+                    <InputQueryVariables
+                      error={errors.variables}
+                      register={register('variables', {
+                        validate: {
+                          validate: (variables) => validateQueryVariablesInput(variables),
+                        },
+                      })}
+                      variablesText={variablesMessage}
+                      changeVariablesText={changeVariablesMessage}
+                    />
+                  )}
+                </div>
+              </div>
             </div>
           </div>
           <button className="editor__request-button" type="submit">
