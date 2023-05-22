@@ -6,9 +6,15 @@
   align-items: center;
   padding: 0 1rem;
   justify-content: space-between;
+  gap: 1rem;
 
   img {
     height: 4rem;
+    transition: 0.3s;
+
+    @media (width < 375px) {
+      height: 3rem;
+    }
   }
 
   a {

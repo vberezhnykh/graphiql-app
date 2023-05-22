@@ -1,6 +1,7 @@
 import React from 'react';
 import { apiHeadersExample } from '../utils/constants';
 import { InputQueryHeadersInterface } from 'utils/interfaces';
+import { useTranslation } from 'react-i18next';
 
 export function InputQueryHeaders({
   register,
@@ -8,6 +9,7 @@ export function InputQueryHeaders({
   headersText,
   changeHeadersText,
 }: InputQueryHeadersInterface) {
+  const { t } = useTranslation();
   return (
     <>
       <textarea
@@ -18,7 +20,11 @@ export function InputQueryHeaders({
         value={headersText}
         onChange={changeHeadersText}
       ></textarea>
-      {error && <span>Required field! Use template like {apiHeadersExample}</span>}
+      {error && (
+        <span>
+          {t('main.errors.required')} {apiHeadersExample}
+        </span>
+      )}
     </>
   );
 }

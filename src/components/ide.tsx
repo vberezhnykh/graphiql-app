@@ -2,7 +2,7 @@ import { apiHeadersExample, apiVariablesExample, baseQueryRequest } from '../uti
 import { getData, getSchema } from '../api/api';
 import React, { ChangeEvent, Suspense, useRef, useState, lazy } from 'react';
 import { Tabs } from './tabs';
-import { TTab } from 'types';
+import { TTab } from 'types/types';
 import { useForm } from 'react-hook-form';
 import { FormInputState } from '../utils/interfaces';
 import { InputQueryHeaders } from './inputQueryHeaders';
@@ -11,6 +11,7 @@ import { InputQueryVariables } from './inputQueryVariables';
 
 import type { TypedComponentType } from './docs';
 const Docs = lazy(() => import('./docs')) as TypedComponentType;
+import { useTranslation } from 'react-i18next';
 
 const IDE = () => {
   const [queryMessage, setQueryMessage] = useState<string | undefined>('');
@@ -25,9 +26,11 @@ const IDE = () => {
     setVariablesMessage(event.target.value);
   };
 
+  const { t } = useTranslation();
+
   const tabs: TTab[] = [
-    { id: '1', label: 'Headers' },
-    { id: '2', label: 'Variables' },
+    { id: '1', label: t('main.headers') },
+    { id: '2', label: t('main.variables') },
   ];
 
   const [selectedTabId, setSelectedTabId] = useState(tabs[0].id);
@@ -73,7 +76,7 @@ const IDE = () => {
     <div className="editor">
       <div className="editor__container">
         <div className="editor__docs">
-          <h4 className="editor__header docs-header">Docs</h4>
+          <h4 className="editor__header docs-header">{t('main.docs')}</h4>
           <div className="editor__docs-container">
             <Suspense fallback={'Loading...'}>
               <Docs rend={renderDocs} text={schemaMessage} />
@@ -81,7 +84,7 @@ const IDE = () => {
           </div>
         </div>
         <form className="editor__request" onSubmit={handleSubmit(onSubmit)}>
-          <h4 className="editor__header request-header">Request</h4>
+          <h4 className="editor__header request-header">{t('main.request.heading')}</h4>
           <textarea
             id="request"
             className="editor__textarea-request"
@@ -125,18 +128,18 @@ const IDE = () => {
             </div>
           </div>
           <button className="editor__request-button" type="submit">
-            Request
+            {t('main.request.heading')}
           </button>
-          {statusValid && <span>Request has been sent</span>}
+          {statusValid && <span>{t('main.request.validMsg')}</span>}
         </form>
         <div className="editor__response">
-          <h4 className="editor__header response-header">Response</h4>
+          <h4 className="editor__header response-header">{t('main.response.heading')}</h4>
           <textarea
             id="response"
             className="editor__textarea-response"
             value={queryMessage}
             readOnly
-            placeholder="Here you get response from API"
+            placeholder={t('main.response.placeholder')}
           ></textarea>
         </div>
       </div>

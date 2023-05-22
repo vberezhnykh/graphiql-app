@@ -1,4 +1,4 @@
-import { TVariablesInput } from 'types';
+import { TVariablesInput } from 'types/types';
 import { baseApiGraphQLAddress, baseSchemaRequest } from '../utils/constants';
 import { ensureError } from '../utils/functions';
 
