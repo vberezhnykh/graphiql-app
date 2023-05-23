@@ -1,11 +1,18 @@
 .header {
-  height: 6rem;
+  height: $header-height;
   border-bottom: 0.2rem solid $blue;
   font-size: 2rem;
 
   @media (width < 500px) {
     height: auto;
   }
+}
+
+.header--sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: $white;
 }
 
 .header-container {
@@ -22,8 +29,9 @@
   }
 
   @media (width < 500px) {
-    height: auto;
+    height: $header-height--mobile;
     padding: 0.5rem;
+    z-index: 100;
   }
 }
 
