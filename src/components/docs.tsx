@@ -15,9 +15,9 @@ function Docs({ rend, text }: DocsRenderInterface) {
           <button className="btn docs-inner-button" onClick={() => navigate(-1)}>
             Go Back
           </button>
-          <p className="docs-inner-start">
+          <div className="docs-inner-start">
             <NavLink to="/main/query">Start</NavLink>
-          </p>
+          </div>
           <Outlet context={mail} />
         </div>
       )}

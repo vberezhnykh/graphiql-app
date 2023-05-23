@@ -81,6 +81,12 @@
 
     &__tabs-block {
       display: flex;
+      height: 98px;
+      animation: 0.3ms;
+    }
+
+    &__tabs-block.hide {
+      display: none;
     }
 
 		&__response {

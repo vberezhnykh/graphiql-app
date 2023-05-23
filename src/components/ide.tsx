@@ -48,6 +48,11 @@ const IDE = () => {
 
   const [statusValid, setStatusValid] = React.useState(false);
   const [renderDocs, setRenderDocs] = React.useState(false);
+  const [showHeadersAndVariables, setShowHeadersAndVariables] = React.useState(false);
+  const handleShowHeadersAndVariables = () => {
+    event?.stopPropagation();
+    setShowHeadersAndVariables(!showHeadersAndVariables);
+  };
 
   const onSubmit = async () => {
     try {
@@ -94,8 +99,14 @@ const IDE = () => {
           ></textarea>
           <div className="editor__request-container">
             <div className="editor__tabs-group">
-              <button className="editor__tabs-show-button">Show(Hide) additional fields</button>
-              <div className="editor__tabs-block">
+              <button
+                type="button"
+                className="editor__tabs-show-button"
+                onClick={handleShowHeadersAndVariables}
+              >
+                Show(Hide) additional fields
+              </button>
+              <div className={`editor__tabs-block ${showHeadersAndVariables ? 'hide' : ''}`}>
                 <Tabs selectedId={selectedTabId} tabs={tabs} onClick={handleTabClick} />
                 <div className="tabs-container">
                   {selectedTabId === tabs[0].id && (
