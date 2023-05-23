@@ -85,3 +85,7 @@
   @include button();
   background-color: $gray;
 }
+
+.main-link--not-allowed {
+  cursor: not-allowed;
+}

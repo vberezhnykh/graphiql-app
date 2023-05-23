@@ -49,14 +49,17 @@ const Header = () => {
   const dispath = useAppDispatch();
 
   return (
-    <header className={`header ${isSticky ? 'header--sticky' : undefined}`} ref={headerRef}>
+    <header className={`header ${isSticky ? 'header--sticky' : ''}`} ref={headerRef}>
       <div className="header-container">
         <nav className="navigation">
           {...navLinks.map((navLink) => (
             <NavLink
               key={navLink.text}
               to={navLink.to}
-              className={({ isActive }) => (isActive ? 'nav-list__item--active' : undefined)}
+              className={({ isActive }) => {
+                if (navLink.to === '/') return isActive ? 'nav-list__item--active' : '';
+                return isActive ? 'nav-list__item--active' : !user ? 'main-link--not-allowed' : '';
+              }}
             >
               {navLink.text}
             </NavLink>
