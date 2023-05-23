@@ -42,7 +42,6 @@
       min-height: 100%;
       display: flex;
       flex-direction: column;
-      overflow-y: hidden;
 		}
 
 		&__request-container {
@@ -79,10 +78,15 @@
       align-items: center;
     }
 
+    &__tabs-show-button:hover {
+      cursor: pointer;
+      background-color: rgba(128, 128, 128, 0.795);
+    }
+
     &__tabs-block {
       display: flex;
-      height: 98px;
-      animation: 0.3ms;
+      position: relative;
+      // height: 98px;
     }
 
     &__tabs-block.hide {

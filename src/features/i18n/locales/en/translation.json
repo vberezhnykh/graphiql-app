@@ -82,7 +82,8 @@
     "docs": "Docs",
     "request": {
       "heading": "Request",
-      "validMsg": "Request has been sent"
+      "validMsg": "Request has been sent",
+      "extraButton": "Show(Hide) additional fields"
     },
     "headers": "Headers",
     "variables": "Variables",
@@ -118,5 +119,9 @@
   },
   "error": {
     "heading": "Oops...page not found."
+  },
+  "request": {
+    "success": "Request was successfully sent.",
+    "fail": "Request failed."
   }
 }

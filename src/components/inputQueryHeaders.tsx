@@ -21,7 +21,7 @@ export function InputQueryHeaders({
         onChange={changeHeadersText}
       ></textarea>
       {error && (
-        <span>
+        <span style={{ color: 'red', position: 'absolute', top: '60%', left: '40%' }}>
           {t('main.errors.required')} {apiHeadersExample}
         </span>
       )}

@@ -8,6 +8,7 @@ import { FormInputState } from '../utils/interfaces';
 import { InputQueryHeaders } from './inputQueryHeaders';
 import { validateQueryHeadersInput, validateQueryVariablesInput } from '../utils/functions';
 import { InputQueryVariables } from './inputQueryVariables';
+import { ToastContainer } from 'react-toastify';
 
 import type { TypedComponentType } from './docs';
 const Docs = lazy(() => import('./docs')) as TypedComponentType;
@@ -50,13 +51,11 @@ const IDE = () => {
   const [renderDocs, setRenderDocs] = React.useState(false);
   const [showHeadersAndVariables, setShowHeadersAndVariables] = React.useState(false);
   const handleShowHeadersAndVariables = () => {
-    event?.stopPropagation();
     setShowHeadersAndVariables(!showHeadersAndVariables);
   };
 
   const onSubmit = async () => {
     try {
-      setStatusValid(true);
       const checkHeadersMessage = headersMessage ? headersMessage : apiHeadersExample;
       const checkVariablesMessage = variablesMessage ? variablesMessage : '{}';
       setQueryMessage(
@@ -68,6 +67,7 @@ const IDE = () => {
       );
       setSchemaMessage(await getSchema());
       setRenderDocs(true);
+      setStatusValid(true);
       reset();
       setTimeout(() => {
         setStatusValid(false);
@@ -104,7 +104,7 @@ const IDE = () => {
                 className="editor__tabs-show-button"
                 onClick={handleShowHeadersAndVariables}
               >
-                Show(Hide) additional fields
+                {t('main.request.extraButton')}
               </button>
               <div className={`editor__tabs-block ${showHeadersAndVariables ? 'hide' : ''}`}>
                 <Tabs selectedId={selectedTabId} tabs={tabs} onClick={handleTabClick} />
@@ -141,7 +141,7 @@ const IDE = () => {
           <button className="editor__request-button" type="submit">
             {t('main.request.heading')}
           </button>
-          {statusValid && <span>{t('main.request.validMsg')}</span>}
+          {statusValid && <ToastContainer className={'toast-container'} />}
         </form>
         <div className="editor__response">
           <h4 className="editor__header response-header">{t('main.response.heading')}</h4>

@@ -21,7 +21,7 @@ export function InputQueryVariables({
         onChange={changeVariablesText}
       ></textarea>
       {error && (
-        <span>
+        <span style={{ color: 'red', position: 'absolute', top: '60%', left: '40%' }}>
           {t('main.errors.variables')} {apiVariablesExample} or live empty
         </span>
       )}
