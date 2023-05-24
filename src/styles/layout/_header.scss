@@ -13,6 +13,7 @@
   top: 0;
   width: 100%;
   background-color: $white;
+  z-index: 2;
 }
 
 .header-container {
@@ -31,7 +32,6 @@
   @media (width < 500px) {
     height: $header-height--mobile;
     padding: 0.5rem;
-    z-index: 100;
   }
 }
 
