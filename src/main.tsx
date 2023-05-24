@@ -74,7 +74,6 @@ import EpisodeComponent from './components/docsInner/bottomComponents/episode';
 import FilterEpisode from './components/docsInner/filter/filterEpisode';
 import EpisodesByIdsField from './components/docsInner/queryFields/episodeField/episodesByIdsField';
 import './features/i18n/i18n';
-import { getAuth } from 'firebase/auth';
 import { auth, logout } from './features/firebase';
 
 const router = createBrowserRouter([
