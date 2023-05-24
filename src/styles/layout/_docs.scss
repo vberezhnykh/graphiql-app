@@ -2,3 +2,13 @@
   height: 100%;
 }
 
+.docs-inner-block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.docs-btn:hover {
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 0.795);
+  color: #fff;
+}

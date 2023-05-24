@@ -7,7 +7,7 @@ function QueryFields() {
   const fields = text.data.__schema.types[0].fields;
   return (
     <>
-      <p>Fields</p>
+      <h3>Fields</h3>
       {fields && (
         <div>
           <div>

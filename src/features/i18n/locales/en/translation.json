@@ -123,5 +123,9 @@
   "request": {
     "success": "Request was successfully sent.",
     "fail": "Request failed."
+  },
+  "docs": {
+    "open": "Start",
+    "button": "Back"
   }
 }

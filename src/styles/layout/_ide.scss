@@ -8,7 +8,6 @@
       display: grid;
       gap: 20px;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 2;
 		}
 
 		&__docs {
@@ -62,6 +61,7 @@
     &__request-button:hover {
       cursor: pointer;
       background-color: rgba(128, 128, 128, 0.795);
+      color: #fff;
     }
 
     &__tabs-group {
@@ -81,12 +81,12 @@
     &__tabs-show-button:hover {
       cursor: pointer;
       background-color: rgba(128, 128, 128, 0.795);
+      color: #fff;
     }
 
     &__tabs-block {
       display: flex;
       position: relative;
-      // height: 98px;
     }
 
     &__tabs-block.hide {
