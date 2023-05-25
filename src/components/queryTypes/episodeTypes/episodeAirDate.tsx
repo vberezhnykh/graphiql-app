@@ -1,13 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function EpisodeAirDateComponent() {
+  const { t } = useTranslation();
   return (
     <>
       <h3>air date</h3>
-      <p>The air date of the episode.</p>
+      <p>{t('docs.episodeType.episodeAirDate')}</p>
       <div>
-        <p>Type</p>
+        <p>{t('docs.general.type')}</p>
         <p>
           <NavLink to="/main/string">String</NavLink>
         </p>

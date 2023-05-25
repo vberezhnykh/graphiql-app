@@ -81,7 +81,7 @@ function CharacterType() {
             <div>
               <NavLink to="/main/characterEpisode">{types.fields[9].name}</NavLink>:
               <NavLink to="/main/episodeType">[Episode]!</NavLink>
-              <p>{t('docs.characterType.charaterEpisode')}</p>
+              <p>{t('docs.characterType.characterEpisode')}</p>
             </div>
           </div>
           <div>

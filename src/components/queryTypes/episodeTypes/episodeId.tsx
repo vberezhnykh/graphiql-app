@@ -1,13 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function EpisodeIdComponent() {
+  const { t } = useTranslation();
   return (
     <>
       <h3>id</h3>
-      <p>The id of the episode.</p>
+      <p>{t('docs.episodeType.episodeId')}</p>
       <div>
-        <p>Type</p>
+        <p>{t('docs.general.type')}</p>
         <p>
           <NavLink to="/main/id">ID</NavLink>
         </p>

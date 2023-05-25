@@ -1,13 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function EpisodeCharactersComponent() {
+  const { t } = useTranslation();
   return (
     <>
       <h3>characters</h3>
-      <p>List of characters who have been seen in the episode.</p>
+      <p>{t('docs.episodeType.episodeCharacters')}</p>
       <div>
-        <p>Type</p>
+        <p>{t('docs.general.type')}</p>
         <p>
           <NavLink to="/main/characterType">[Character]!</NavLink>
         </p>

@@ -1,13 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function CharacterGenderComponent() {
+  const { t } = useTranslation();
   return (
     <>
-      <h3>species</h3>
-      <p>The gender of the character (`Female`, `Male`, `Genderless` or `unknown`).</p>
+      <h3>gender</h3>
+      <p>{t('docs.characterType.characterGender')}</p>
       <div>
-        <p>Type</p>
+        <p>{t('docs.general.type')}</p>
         <p>
           <NavLink to="/main/string">String</NavLink>
         </p>
