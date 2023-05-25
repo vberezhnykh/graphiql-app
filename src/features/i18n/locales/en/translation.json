@@ -127,7 +127,7 @@
   "docs": {
     "open": "Start",
     "button": "Back",
-      "queryFields": {
+    "queryFields": {
         "header": "Fields",
         "characterById": "Get a specific character by ID",
         "charactersAll": "Get the list of all characters",
@@ -138,6 +138,63 @@
         "episodeById": "Get a specific episode by ID",
         "episodesAll": "Get the list of all episodes",
         "episodesByIds": "Get a list of episodes selected by ids"
-      }
+    },
+    "characterType": {
+      "header": "Fields",
+      "characterId": "The id of the character.",
+      "characterName": "The name of the character.",
+      "characterStatus": "The status of the character (`Alive`, `Dead` or `unknown`).",
+      "characterSpecies": "The species of the character.",
+      "characterSubType": "The type or subspecies of the character.",
+      "characterGender": "The gender of the character (`Female`, `Male`, `Genderless` or `unknown`).",
+      "characterOrigin": "The character`s origin location.",
+      "characterLocation": "The character`s last known location.",
+      "characterImage": "Link to the character`s image. All images are 300x300px and most are medium shots or portraits since they are intended to be used as avatars.",
+      "charaterEpisode": "Episodes in which this character appeared.",
+      "characterCreated": "Time at which the character was created in the database."
+    },
+    "locationType": {
+      "header": "Fields",
+      "locationId": "The id of the location.",
+      "locationName": "The name of the location.",
+      "locationSubType": "The type of the location.",
+      "locationDimension": "The dimension in which the location is located.",
+      "locationResidents": "List of characters who have been last seen in the location.",
+      "locationCreated": "Time at which the location was created in the database."
+    },
+    "episodeType": {
+      "header": "Fields",
+      "episodeId": "The id of the episode.",
+      "episodeName": "The name of the episode.",
+      "episodeAirDate": "The air date of the episode.",
+      "episodeCode": "The code of the episode.",
+      "episodeCharacters": "List of characters who have been seen in the episode.",
+      "episodeCreated": "Time at which the episode was created in the database."
+    },
+    "general": {
+      "type": "Type",
+      "arguments": "Arguments",
+      "results": "results"
+    },
+    "infoType": {
+      "header": "fields",
+      "length": "The length of the response.",
+      "amount": "The amount of pages.",
+      "next": "Number of the next page (if it exists)",
+      "previous": "Number of the previous page (if it exists)"
+    },
+    "filter": {
+      "header": "fields",
+      "name": "name",
+      "status": "status",
+      "species": "species",
+      "type": "type",
+      "gender": "gender",
+      "episode": "episode",
+      "dimension": "dimension"
+    },
+    "bottom": {
+      "string": "The String scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text."
+    }
   }
 }

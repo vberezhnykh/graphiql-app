@@ -1,19 +1,21 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function LocationsField() {
+  const { t } = useTranslation();
   return (
     <>
       <h3>locations</h3>
-      <p>Get the list of all locations</p>
+      <p>{t('docs.queryFields.locationsAll')}</p>
       <div>
-        <p>Type</p>
+        <p>{t('docs.general.type')}</p>
         <p>
           <NavLink to="/main/locationsType">Locations</NavLink>
         </p>
       </div>
       <div>
-        <p>Arguments</p>
+        <p>{t('docs.general.arguments')}</p>
         <p>
           page: <NavLink to="/main/id">Int</NavLink>
         </p>
