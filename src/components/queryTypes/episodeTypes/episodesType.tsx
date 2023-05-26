@@ -1,11 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function EpisodesType() {
+  const { t } = useTranslation();
   return (
     <>
       <h3>Episodes</h3>
-      <p>fields</p>
+      <p>{t('docs.infoType.header')}</p>
       <div>
         <div>
           <NavLink to="/main/info">info: </NavLink>

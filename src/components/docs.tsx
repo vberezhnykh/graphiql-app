@@ -1,6 +1,7 @@
 import React from 'react';
 import { DocsRenderInterface, SchemaResponseInterface } from '../utils/interfaces';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { t } from 'i18next';
 
 function Docs({ rend, text }: DocsRenderInterface) {
   const message = text;
@@ -12,12 +13,14 @@ function Docs({ rend, text }: DocsRenderInterface) {
     <>
       {show && message && (
         <div className="docs-inner-container">
-          <button className="btn docs-inner-button" onClick={() => navigate(-1)}>
-            Go Back
-          </button>
-          <p className="docs-inner-start">
-            <NavLink to="/main/query">Start</NavLink>
-          </p>
+          <div className="docs-inner-block">
+            <button className="docs-inner-start docs-btn">
+              <NavLink to="/main/query">{t('docs.open')}</NavLink>
+            </button>
+            <button className="btn docs-inner-button docs-btn" onClick={() => navigate(-1)}>
+              {t('docs.button')}
+            </button>
+          </div>
           <Outlet context={mail} />
         </div>
       )}

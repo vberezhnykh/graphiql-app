@@ -1,6 +1,8 @@
 import { TVariablesInput } from 'types/types';
 import { baseApiGraphQLAddress, baseSchemaRequest } from '../utils/constants';
 import { ensureError } from '../utils/functions';
+import { toast } from 'react-toastify';
+import { t } from 'i18next';
 
 export async function getData(
   headersInput: Headers | undefined,
@@ -18,14 +20,14 @@ export async function getData(
     });
     if (response.status === 200) {
       const result = await response.json();
+      toast.success(t('request.success'));
       return JSON.stringify(result);
     }
-    alert('Check query input');
+    toast.error(t('request.fail'));
     const result = await response.json();
     return JSON.stringify(result);
   } catch (e) {
-    const error = ensureError(e);
-    alert(error.message);
+    toast.error(t('request.fail'));
   }
 }
 
@@ -46,7 +48,6 @@ export async function getSchema() {
     }
     alert('Not valid schema');
   } catch (e) {
-    const error = ensureError(e);
-    alert(error.message);
+    ensureError(e);
   }
 }

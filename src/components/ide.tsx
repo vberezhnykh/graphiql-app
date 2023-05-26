@@ -1,22 +1,31 @@
-import { apiHeadersExample, apiVariablesExample, baseQueryRequest } from '../utils/constants';
+import { apiHeadersExample, apiVariablesExample } from '../utils/constants';
 import { getData, getSchema } from '../api/api';
-import React, { ChangeEvent, Suspense, useRef, useState, lazy } from 'react';
+import React, { ChangeEvent, Suspense, useState, lazy } from 'react';
 import { Tabs } from './tabs';
 import { TTab } from 'types/types';
 import { useForm } from 'react-hook-form';
 import { FormInputState } from '../utils/interfaces';
 import { InputQueryHeaders } from './inputQueryHeaders';
-import { validateQueryHeadersInput, validateQueryVariablesInput } from '../utils/functions';
+import {
+  validateQueryHeadersInput,
+  validateQueryVariablesInput,
+  validateQueryInput,
+} from '../utils/functions';
 import { InputQueryVariables } from './inputQueryVariables';
+import { ToastContainer } from 'react-toastify';
 
 import type { TypedComponentType } from './docs';
 const Docs = lazy(() => import('./docs')) as TypedComponentType;
 import { useTranslation } from 'react-i18next';
+import { InputQuery } from './inputQuery';
 
 const IDE = () => {
   const [queryMessage, setQueryMessage] = useState<string | undefined>('');
   const [schemaMessage, setSchemaMessage] = useState<string | undefined>('');
-  const ref = useRef<HTMLTextAreaElement>(null);
+  const [queryRequest, setQueryRequest] = useState('');
+  const changeQueryMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setQueryRequest(event.target.value);
+  };
   const [headersMessage, setHeadersMessage] = useState(apiHeadersExample);
   const changeHeadersMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setHeadersMessage(event.target.value);
@@ -48,21 +57,27 @@ const IDE = () => {
 
   const [statusValid, setStatusValid] = React.useState(false);
   const [renderDocs, setRenderDocs] = React.useState(false);
+  const [showHeadersAndVariables, setShowHeadersAndVariables] = React.useState(false);
+  const handleShowHeadersAndVariables = () => {
+    setShowHeadersAndVariables(!showHeadersAndVariables);
+  };
 
   const onSubmit = async () => {
     try {
-      setStatusValid(true);
       const checkHeadersMessage = headersMessage ? headersMessage : apiHeadersExample;
       const checkVariablesMessage = variablesMessage ? variablesMessage : '{}';
+      const checkQueryMessage = queryRequest ? queryRequest : '{}';
+      console.log(checkQueryMessage);
       setQueryMessage(
         await getData(
           JSON.parse(checkHeadersMessage),
-          ref?.current?.value,
+          checkQueryMessage,
           JSON.parse(checkVariablesMessage)
         )
       );
       setSchemaMessage(await getSchema());
       setRenderDocs(true);
+      setStatusValid(true);
       reset();
       setTimeout(() => {
         setStatusValid(false);
@@ -85,17 +100,27 @@ const IDE = () => {
         </div>
         <form className="editor__request" onSubmit={handleSubmit(onSubmit)}>
           <h4 className="editor__header request-header">{t('main.request.heading')}</h4>
-          <textarea
-            id="request"
-            className="editor__textarea-request"
-            ref={ref}
-            placeholder={baseQueryRequest}
-            defaultValue={baseQueryRequest}
-          ></textarea>
+          <InputQuery
+            error={errors.query}
+            register={register('query', {
+              required: true,
+              validate: {
+                validate: (query) => validateQueryInput(query),
+              },
+            })}
+            queryText={queryRequest}
+            changeQueryText={changeQueryMessage}
+          />
           <div className="editor__request-container">
             <div className="editor__tabs-group">
-              <button className="editor__tabs-show-button">Show(Hide) additional fields</button>
-              <div className="editor__tabs-block">
+              <button
+                type="button"
+                className="editor__tabs-show-button"
+                onClick={handleShowHeadersAndVariables}
+              >
+                {t('main.request.extraButton')}
+              </button>
+              <div className={`editor__tabs-block ${showHeadersAndVariables ? 'hide' : ''}`}>
                 <Tabs selectedId={selectedTabId} tabs={tabs} onClick={handleTabClick} />
                 <div className="tabs-container">
                   {selectedTabId === tabs[0].id && (
@@ -130,7 +155,7 @@ const IDE = () => {
           <button className="editor__request-button" type="submit">
             {t('main.request.heading')}
           </button>
-          {statusValid && <span>{t('main.request.validMsg')}</span>}
+          {statusValid && <ToastContainer className={'toast-container'} />}
         </form>
         <div className="editor__response">
           <h4 className="editor__header response-header">{t('main.response.heading')}</h4>

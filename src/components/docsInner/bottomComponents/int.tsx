@@ -1,13 +1,12 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 function IntComponent() {
+  const { t } = useTranslation();
   return (
     <>
       <h3>Int</h3>
-      <p>
-        The Int scalar type represents non-fractional signed whole numeric values. Int can represent
-        values between -(2^31) and 2^31 - 1.
-      </p>
+      <p>{t('docs.bottom.int')}</p>
     </>
   );
 }

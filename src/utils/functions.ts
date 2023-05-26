@@ -20,7 +20,7 @@ export const validateQueryHeadersInput = (text: string) => {
 };
 
 export const validateQueryInput = (text: string) => {
-  if (text.split('').includes('query')) return true;
+  if (text.includes('query')) return true;
   return false;
 };
 

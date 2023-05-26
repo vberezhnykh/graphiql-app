@@ -1,13 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function LocationCreatedComponent() {
+  const { t } = useTranslation();
   return (
     <>
       <h3>created</h3>
-      <p>Time at which the location was created in the database.</p>
+      <p>{t('docs.locationType.locationCreated')}</p>
       <div>
-        <p>Type</p>
+        <p>{t('docs.general.type')}</p>
         <p>
           <NavLink to="/main/string">String</NavLink>
         </p>

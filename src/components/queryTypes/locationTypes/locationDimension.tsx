@@ -1,13 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function LocationDimensionComponent() {
+  const { t } = useTranslation();
   return (
     <>
       <h3>dimension</h3>
-      <p>The dimension in which the location is located.</p>
+      <p>{t('docs.locationType.locationDimension')}</p>
       <div>
-        <p>Type</p>
+        <p>{t('docs.general.type')}</p>
         <p>
           <NavLink to="/main/string">String</NavLink>
         </p>
