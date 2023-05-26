@@ -1,13 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function LocationInnerTypeComponent() {
+  const { t } = useTranslation();
   return (
     <>
       <h3>type</h3>
-      <p>The type of the location.</p>
+      <p>{t('docs.locationType.locationSubType')}</p>
       <div>
-        <p>Type</p>
+        <p>{t('docs.general.type')}</p>
         <p>
           <NavLink to="/main/string">String</NavLink>
         </p>

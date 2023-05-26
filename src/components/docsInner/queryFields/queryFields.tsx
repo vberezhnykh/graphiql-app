@@ -1,17 +1,19 @@
 import React from 'react';
 import { NavLink, useOutletContext } from 'react-router-dom';
 import { SchemaResponseInterface } from 'utils/interfaces';
+import { useTranslation } from 'react-i18next';
 
 function QueryFields() {
   const text: SchemaResponseInterface = useOutletContext();
   const fields = text.data.__schema.types[0].fields;
+  const { t } = useTranslation();
   return (
     <>
-      <p>Fields</p>
+      <h3>{t('docs.queryFields.header')}</h3>
       {fields && (
         <div>
           <div>
-            <p>Get a specific character by ID</p>
+            <p>{t('docs.queryFields.characterById')}</p>
             <div>
               <NavLink to="/main/characterField">{fields[0].name}</NavLink>(id:{' '}
               <NavLink to="/main/id">ID!</NavLink>
@@ -19,7 +21,7 @@ function QueryFields() {
             </div>
           </div>
           <div>
-            <p>Get the list of all characters</p>
+            <p>{t('docs.queryFields.charactersAll')}</p>
             <div>
               <NavLink to="/main/charactersField">{fields[1].name}</NavLink>(page:{' '}
               <NavLink to="/main/int">Int </NavLink>filter:
@@ -28,7 +30,7 @@ function QueryFields() {
             </div>
           </div>
           <div>
-            <p>Get a list of characters selected by ids</p>
+            <p>{t('docs.queryFields.charactersByIds')}</p>
             <div>
               <NavLink to="/main/charactersByIdsField">{fields[2].name}</NavLink>(ids:{' '}
               <NavLink to="/main/id">[ID!]!): </NavLink>
@@ -36,7 +38,7 @@ function QueryFields() {
             </div>
           </div>
           <div>
-            <p>Get a specific locations by ID</p>
+            <p>{t('docs.queryFields.locationById')}</p>
             <div>
               <NavLink to="/main/locationField">{fields[3].name}</NavLink>(id:{' '}
               <NavLink to="/main/id">ID!): </NavLink>
@@ -44,7 +46,7 @@ function QueryFields() {
             </div>
           </div>
           <div>
-            <p>Get the list of all locations</p>
+            <p>{t('docs.queryFields.locationsAll')}</p>
             <div>
               <NavLink to="/main/locationsField">{fields[4].name}</NavLink>(page:{' '}
               <NavLink to="/main/int">Int </NavLink>filter:
@@ -53,7 +55,7 @@ function QueryFields() {
             </div>
           </div>
           <div>
-            <p>Get a list of locations selected by ids</p>
+            <p>{t('docs.queryFields.locationsByIds')}</p>
             <div>
               <NavLink to="/main/locationsByIdsField">{fields[5].name}</NavLink>(ids:{' '}
               <NavLink to="/main/id">[ID!]!): </NavLink>
@@ -61,7 +63,7 @@ function QueryFields() {
             </div>
           </div>
           <div>
-            <p>Get a specific episode by ID</p>
+            <p>{t('docs.queryFields.episodeById')}</p>
             <div>
               <NavLink to="/main/episodeField">{fields[6].name}</NavLink>(id:{' '}
               <NavLink to="/main/id">ID!): </NavLink>
@@ -69,7 +71,7 @@ function QueryFields() {
             </div>
           </div>
           <div>
-            <p>Get the list of all episodes</p>
+            <p>{t('docs.queryFields.episodesAll')}</p>
             <div>
               <NavLink to="/main/episodesField">{fields[7].name}</NavLink>(page:{' '}
               <NavLink to="/main/int">Int </NavLink>filter:
@@ -78,7 +80,7 @@ function QueryFields() {
             </div>
           </div>
           <div>
-            <p>Get a list of episodes selected by ids</p>
+            <p>{t('docs.queryFields.episodesByIds')}</p>
             <div>
               <NavLink to="/main/episodesByIdsField">{fields[8].name}</NavLink>(ids:{' '}
               <NavLink to="/main/id">[ID!]!): </NavLink>

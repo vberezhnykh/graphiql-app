@@ -1,19 +1,21 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function CharactersField() {
+  const { t } = useTranslation();
   return (
     <>
       <h3>characters</h3>
-      <p>Get the list of all characters</p>
+      <p>{t('docs.queryFields.charactersAll')}</p>
       <div>
-        <p>Type</p>
+        <p>{t('docs.general.type')}</p>
         <p>
           <NavLink to="/main/charactersType">Characters</NavLink>
         </p>
       </div>
       <div>
-        <p>Arguments</p>
+        <p>{t('docs.general.arguments')}</p>
         <p>
           page: <NavLink to="/main/int">Int</NavLink>
         </p>

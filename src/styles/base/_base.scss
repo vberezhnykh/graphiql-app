@@ -19,3 +19,17 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.editor__docs-container {
+  font-size: 1.3rem;
+}
+
+.editor__docs-container a {
+  color: blue;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.editor__docs-container a:hover {
+  cursor: pointer;
+}

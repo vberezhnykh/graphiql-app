@@ -8,7 +8,7 @@
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 2;
+    grid-auto-rows: minmax(auto, 500px);
   }
 
   &__docs {
@@ -16,6 +16,7 @@
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
   }
 
   &__docs-container {
@@ -42,7 +43,6 @@
     min-height: 100%;
     display: flex;
     flex-direction: column;
-    overflow-y: hidden;
   }
 
   &__request-container {
@@ -63,6 +63,7 @@
   &__request-button:hover {
     cursor: pointer;
     background-color: rgba(128, 128, 128, 0.795);
+    color: #fff;
   }
 
   &__tabs-group {
@@ -79,8 +80,19 @@
     align-items: center;
   }
 
+  &__tabs-show-button:hover {
+    cursor: pointer;
+    background-color: rgba(128, 128, 128, 0.795);
+    color: #fff;
+  }
+
   &__tabs-block {
     display: flex;
+    position: relative;
+  }
+
+  &__tabs-block.hide {
+    display: none;
   }
 
   &__response {

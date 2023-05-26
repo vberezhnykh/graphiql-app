@@ -1,13 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function CharacterLocationComponent() {
+  const { t } = useTranslation();
   return (
     <>
       <h3>location</h3>
-      <p>The character`&apos;`s last known location.</p>
+      <p>{t('docs.characterType.characterLocation')}</p>
       <div>
-        <p>Type</p>
+        <p>{t('docs.general.type')}</p>
         <p>
           <NavLink to="/main/locationType">Location</NavLink>
         </p>

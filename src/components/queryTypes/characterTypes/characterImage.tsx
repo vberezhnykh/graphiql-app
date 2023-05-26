@@ -1,16 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function CharacterImageComponent() {
+  const { t } = useTranslation();
   return (
     <>
       <h3>image</h3>
-      <p>
-        Link to the character`s image. All images are 300x300px and most are medium shots or
-        portraits since they are intended to be used as avatars.
-      </p>
+      <p>{t('docs.characterType.characterImage')}</p>
       <div>
-        <p>Type</p>
+        <p>{t('docs.general.type')}</p>
         <p>
           <NavLink to="/main/string">String</NavLink>
         </p>

@@ -1,4 +1,4 @@
-import { ChangeEventHandler, RefObject } from 'react';
+import { ChangeEventHandler } from 'react';
 import { UseFormRegisterReturn, FieldError } from 'react-hook-form';
 
 export interface FormInputState {
@@ -30,7 +30,8 @@ export interface InputQueryVariablesInterface {
 export interface InputQueryInterface {
   register: UseFormRegisterReturn<'query'>;
   error: FieldError | undefined;
-  queryText: RefObject<HTMLTextAreaElement> | undefined;
+  queryText: string | undefined;
+  changeQueryText: ChangeEventHandler<HTMLTextAreaElement> | undefined;
 }
 
 export interface DocsRenderInterface {
