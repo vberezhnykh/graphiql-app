@@ -1,11 +1,19 @@
 .header {
-  height: 6rem;
+  height: $header-height;
   border-bottom: 0.2rem solid $blue;
   font-size: 2rem;
 
   @media (width < 500px) {
     height: auto;
   }
+}
+
+.header--sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: $white;
+  z-index: 2;
 }
 
 .header-container {
@@ -22,7 +30,7 @@
   }
 
   @media (width < 500px) {
-    height: auto;
+    height: $header-height--mobile;
     padding: 0.5rem;
   }
 }
@@ -76,4 +84,8 @@
 .logout-button {
   @include button();
   background-color: $gray;
+}
+
+.main-link--not-allowed {
+  cursor: not-allowed;
 }

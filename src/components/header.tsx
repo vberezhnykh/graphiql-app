@@ -6,8 +6,33 @@ import { saveUserName } from '../store/features/authSlice';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import LanguageSwitcher from './languageSwitcher';
 import { useTranslation } from 'react-i18next';
+import { useEffect, useRef, useState } from 'react';
 
 const Header = () => {
+  const [isSticky, setSticky] = useState({ isSticky: false, offset: 0 });
+  const headerRef = useRef<HTMLElement>(null);
+
+  const handleScroll = (elTopOffset: number, elHeight: number) => {
+    if (window.scrollY > elTopOffset + elHeight) {
+      setSticky({ isSticky: true, offset: elHeight });
+    } else {
+      setSticky({ isSticky: false, offset: 0 });
+    }
+  };
+
+  useEffect(() => {
+    const header = headerRef.current?.getBoundingClientRect();
+    if (!header) return;
+    const handleScrollEvent = () => {
+      handleScroll(header.top, header.height);
+    };
+
+    window.addEventListener('scroll', handleScrollEvent);
+    return () => {
+      window.removeEventListener('scroll', handleScrollEvent);
+    };
+  }, []);
+
   const { t } = useTranslation();
   const navLinks = [
     {
@@ -24,14 +49,17 @@ const Header = () => {
   const dispath = useAppDispatch();
 
   return (
-    <header className="header">
+    <header className={`header ${isSticky ? 'header--sticky' : ''}`} ref={headerRef}>
       <div className="header-container">
         <nav className="navigation">
           {...navLinks.map((navLink) => (
             <NavLink
               key={navLink.text}
               to={navLink.to}
-              className={({ isActive }) => (isActive ? 'nav-list__item--active' : undefined)}
+              className={({ isActive }) => {
+                if (navLink.to === '/') return isActive ? 'nav-list__item--active' : '';
+                return isActive ? 'nav-list__item--active' : !user ? 'main-link--not-allowed' : '';
+              }}
             >
               {navLink.text}
             </NavLink>
