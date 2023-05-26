@@ -1,4 +1,4 @@
-import { ChangeEventHandler, RefObject } from 'react';
+import { ChangeEventHandler } from 'react';
 import { UseFormRegisterReturn, FieldError } from 'react-hook-form';
 
 export interface FormInputState {
