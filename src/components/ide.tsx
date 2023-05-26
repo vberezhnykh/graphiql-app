@@ -67,7 +67,6 @@ const IDE = () => {
       const checkHeadersMessage = headersMessage ? headersMessage : apiHeadersExample;
       const checkVariablesMessage = variablesMessage ? variablesMessage : '{}';
       const checkQueryMessage = queryRequest ? queryRequest : '{}';
-      console.log(checkQueryMessage);
       setQueryMessage(
         await getData(
           JSON.parse(checkHeadersMessage),
