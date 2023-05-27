@@ -345,7 +345,7 @@ const router = createBrowserRouter([
 window.setInterval(() => {
   const currentUser = auth.currentUser;
   if (currentUser) logout();
-}, 600000);
+}, 900000);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
