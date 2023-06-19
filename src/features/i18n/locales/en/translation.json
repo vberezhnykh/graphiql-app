@@ -1,0 +1,202 @@
+{
+  "home": {
+    "paragraphs": {
+      "1": "GraphiQL is a playground/IDE for graphQL requests.",
+      "2": {
+        "part1": "Made by Valentin Berezhnykh and Jan Chorny as a",
+        "part2": "final task",
+        "part3": "on the",
+        "part4": "React course",
+        "part5": "organized by RSSchool."
+      }
+    }
+  },
+  "header": {
+    "links": {
+      "home": "Home",
+      "main": "Main"
+    },
+    "buttons": {
+      "signout": "Sign out",
+      "signin": "Sign In",
+      "signup": "Sign Up"
+    }
+  },
+  "footer": {
+    "text": {
+      "part1": "Made by",
+      "part2": "and",
+      "part3": "in 2023"
+    }
+  },
+  "login": {
+    "header": {
+      "part1": "Not a member?",
+      "part2": "Sign up now"
+    },
+    "heading": "Sign in",
+    "form": {
+      "email": "Email",
+      "reset": "Forgot password?",
+      "password": "Password",
+      "submit": "Sign in"
+    },
+    "errors": {
+      "email": {
+        "empty": "Email cannot be empty",
+        "invalid": "Entered value does not match email format"
+      },
+      "password": "Password cannot be empty"
+    }
+  },
+  "register": {
+    "header": {
+      "part1": "Already have an account?",
+      "part2": "Sign In"
+    },
+    "heading": "Sign up",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create Account"
+    },
+    "errors": {
+      "name": {
+        "empty": "Name cannot be empty",
+        "invalid": "Name is invalid",
+        "minlength": "Name must consist of at least 2 letters"
+      },
+      "email": {
+        "empty": "Email cannot be empty",
+        "invalid": "Entered value does not match email format"
+      },
+      "password": {
+        "empty": "Password cannot be empty",
+        "invalid": "Password must contain at least one letter, one number, one special character",
+        "minlength": "Password must have at least 8 characters"
+      }
+    }
+  },
+  "main": {
+    "docs": "Docs",
+    "request": {
+      "heading": "Request",
+      "validMsg": "Request has been sent",
+      "extraButton": "Show(Hide) additional fields"
+    },
+    "headers": "Headers",
+    "variables": "Variables",
+    "response": {
+      "heading": "Response",
+      "placeholder": "Here you get response from API"
+    },
+    "errors": {
+      "required": "Required field! Use template like",
+      "variables": "Use variables with template like"
+    }
+  },
+  "firebase": {
+    "errors": {
+      "wrong-password": "Wrong password",
+      "user-not-found": "User not found",
+      "email-in-use": "Email already in use"
+    }
+  },
+  "reset": {
+    "successMsg": "Reset link send. You will be redirected to login page soon...",
+    "header": {
+      "part1": "Remember your password?",
+      "part2": "Sign in"
+    },
+    "heading": "Forgot your password?",
+    "email": "Email",
+    "errors": {
+      "required": "Email cannot be empty",
+      "invalid": "Entered value does not match email format"
+    },
+    "submit": "Reset Password"
+  },
+  "error": {
+    "heading": "Oops...page not found."
+  },
+  "request": {
+    "success": "Request was successfully sent.",
+    "fail": "Request failed."
+  },
+  "docs": {
+    "open": "Start",
+    "button": "Back",
+    "queryFields": {
+        "header": "Fields",
+        "characterById": "Get a specific character by ID",
+        "charactersAll": "Get the list of all characters",
+        "charactersByIds": "Get a list of characters selected by ids",
+        "locationById": "Get a specific location by ID",
+        "locationsAll": "Get the list of all locations",
+        "locationsByIds": "Get a list of locations selected by ids",
+        "episodeById": "Get a specific episode by ID",
+        "episodesAll": "Get the list of all episodes",
+        "episodesByIds": "Get a list of episodes selected by ids"
+    },
+    "characterType": {
+      "header": "Fields",
+      "characterId": "The id of the character.",
+      "characterName": "The name of the character.",
+      "characterStatus": "The status of the character (`Alive`, `Dead` or `unknown`).",
+      "characterSpecies": "The species of the character.",
+      "characterSubType": "The type or subspecies of the character.",
+      "characterGender": "The gender of the character (`Female`, `Male`, `Genderless` or `unknown`).",
+      "characterOrigin": "The character`s origin location.",
+      "characterLocation": "The character`s last known location.",
+      "characterImage": "Link to the character`s image. All images are 300x300px and most are medium shots or portraits since they are intended to be used as avatars.",
+      "characterEpisode": "Episodes in which this character appeared.",
+      "characterCreated": "Time at which the character was created in the database."
+    },
+    "locationType": {
+      "header": "Fields",
+      "locationId": "The id of the location.",
+      "locationName": "The name of the location.",
+      "locationSubType": "The type of the location.",
+      "locationDimension": "The dimension in which the location is located.",
+      "locationResidents": "List of characters who have been last seen in the location.",
+      "locationCreated": "Time at which the location was created in the database."
+    },
+    "episodeType": {
+      "header": "Fields",
+      "episodeId": "The id of the episode.",
+      "episodeName": "The name of the episode.",
+      "episodeAirDate": "The air date of the episode.",
+      "episodeCode": "The code of the episode.",
+      "episodeCharacters": "List of characters who have been seen in the episode.",
+      "episodeCreated": "Time at which the episode was created in the database."
+    },
+    "general": {
+      "type": "Type",
+      "arguments": "Arguments",
+      "results": "results"
+    },
+    "infoType": {
+      "header": "fields",
+      "length": "The length of the response.",
+      "amount": "The amount of pages.",
+      "next": "Number of the next page (if it exists)",
+      "previous": "Number of the previous page (if it exists)"
+    },
+    "filter": {
+      "header": "fields",
+      "name": "name",
+      "status": "status",
+      "species": "species",
+      "type": "type",
+      "gender": "gender",
+      "episode": "episode",
+      "dimension": "dimension"
+    },
+    "bottom": {
+      "string": "The String scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
+      "int": "The Int scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
+      "id": "The ID scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `4`) or integer (such as 4) input value will be accepted as an ID."
+    }
+  }
+}
